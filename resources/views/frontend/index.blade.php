@@ -4,7 +4,7 @@
 Home Easy Online Shop
 @endsection
 <div class="body-content outer-top-xs">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             @include('frontend.body.index')
         </div>
