@@ -40,7 +40,9 @@
     transition: .5s ease;
     border-radius: 15px;
   }
-  
+  .containa{
+    margin: 10px;
+  }
   .containa:hover .overlay {
     bottom: 0;
     height: 100%;
