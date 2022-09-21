@@ -15,7 +15,7 @@
     border-radius: 15px;
   }
   .service-title{
-    background-color: rgb(209, 2, 2, 0.5);
+    background-color: rgb(17, 162, 240, 0.8);
     color: #fff;
     border-radius: 10px;
     padding: 10px;
@@ -220,7 +220,7 @@
         <div class="container  mt-5 ">
           <br/><br/><br/> <br/><br/><br/>
           <div class="col-md-4 p-5">
-           <h3 class="slide-title" data-aos="fade-up-left">Laboratory Services</h3>
+           <h1 class="slide-title" data-aos="fade-up-left">Laboratory Services</h1>
            <p class="sub-tile" data-aos="fade-up-left" data-aos-duration="1000">Laboratory Services can be requested online or physically at our facilities</p>
            <button class="buttons"  data-aos="fade-up-left" data-aos-duration="2000">READ MORE</button>
           </div>
@@ -234,7 +234,7 @@
         <div class="container  mt-5 ">
           <br/><br/><br/> <br/><br/><br/>
           <div class="col-md-4 p-5">
-           <h3 class="slide-title" data-aos="fade-up-left">Best Treatment</h3>
+           <h1 class="slide-title" data-aos="fade-up-left">Best Treatment</h1>
            <p class="sub-tile" data-aos="fade-up-left" data-aos-duration="1000">We offer the best Treatment for various diseases</p>
            <button class="buttons"  data-aos="fade-up-left" data-aos-duration="2000">READ MORE</button>
           </div>
@@ -248,7 +248,7 @@
         <div class="container  mt-5 ">
           <br/><br/><br/> <br/><br/><br/>
           <div class="col-md-4 p-5">
-           <h3 class="slide-title" data-aos="fade-up-left">All Vaccinations</h3>
+           <h1 class="slide-title" data-aos="fade-up-left">All Vaccinations</h1>
            <p class="sub-tile" data-aos="fade-up-left" data-aos-duration="1000">Covid 19 and other Vaccinations are offered</p>
            <button class="buttons"  data-aos="fade-up-left" data-aos-duration="2000">READ MORE</button>
           </div>
@@ -261,7 +261,7 @@
         <div class="container  mt-5 ">
           <br/><br/><br/> <br/><br/><br/>
           <div class="col-md-4 p-5">
-           <h3 class="slide-title" data-aos="fade-up-left">Nursing Care</h3>
+           <h1 class="slide-title" data-aos="fade-up-left">Nursing Care</h1>
            <p class="sub-tile" data-aos="fade-up-left" data-aos-duration="1000">Our nurses are highly trained and experience</p>
            <button class="buttons"  data-aos="fade-up-left" data-aos-duration="2000">READ MORE</button>
           </div>
@@ -274,7 +274,7 @@
         <div class="container  mt-5 ">
           <br/><br/><br/> <br/><br/><br/>
           <div class="col-md-4 p-5">
-           <h3 class="slide-title" data-aos="fade-up-left">Consultations </h3>
+           <h1 class="slide-title" data-aos="fade-up-left">Consultations </h1>
            <p class="sub-tile" data-aos="fade-up-left" data-aos-duration="1000">We have specialists in different medical sectors for Consultations</p>
            <button class="buttons"  data-aos="fade-up-left" data-aos-duration="2000">READ MORE</button>
           </div>
@@ -287,7 +287,7 @@
         <div class="container  mt-5 ">
           <br/><br/><br/> <br/><br/><br/>
           <div class="col-md-4 p-5">
-            <h3 class="slide-title" data-aos="fade-up-left">Best Treatment</h3>
+            <h1 class="slide-title" data-aos="fade-up-left">Best Treatment</h1>
             <p class="sub-tile" data-aos="fade-up-left" data-aos-duration="1000">We offer the best Treatment for various diseases</p>
            <button class="buttons"  data-aos="fade-up-left" data-aos-duration="2000">READ MORE</button>
           </div>
@@ -310,21 +310,21 @@
   </div>
   <div class="container d-flex" style="margin-top: -50px;">
     <div class="col-md-2 cat1 flex">
-      <i class="bi bi-eyedropper text1 col-md-3"></i>
+      <i class="bi bi-eyedropper text1 col-md-3" style="margin-top: 10px;"></i>
     <h6 class="text1 col-md-9">Lab Tests</h6>
     </div>
     <div class="col-md-2 cat2 d-flex">
-      <i class="bi bi-headset text1 col-md-3"></i>
+      <i class="bi bi-headset text1 col-md-3" style="margin-top: 10px;"></i>
       <h6 class="text1 col-md-9">Consultations</h6>
     
     </div>
     <div class="col-md-2 cat3 d-flex">
-      <i class="bi bi-droplet-half text1 col-md-3"></i>
+      <i class="bi bi-droplet-half text1 col-md-3" style="margin-top: 10px;"></i>
       <h6 class="text1 col-md-9">Vaccinations</h6>
     
     </div>
     <div class="col-md-2 cat4 d-flex">
-      <i class="bi bi-capsule text1 col-md-3"></i>
+      <i class="bi bi-capsule text1 col-md-3" style="margin-top: 10px;"></i>
       <h6 class="text1 col-md-9">Pharmacy</h6>
     
     </div>
@@ -342,7 +342,7 @@
                
             </div>
             <div class="col-md-5">
-                <div class="p-5 bg-white about-section shadow-sm" style="border-radius: 10px; box-shadow: 2px 2px 4px 2px #88888843; padding: 20px;">
+                <div class="p-5 bg-white about-section shadow-sm" style="border-radius: 10px; box-shadow: 2px 2px 4px 2px #88888843; padding: 20px; background-color:#fff;">
                     <h3 class="slide-title" data-aos="fade-up-left">About Us</h3>
                     <div class="bg-white rounded-3 bg-gray-100" data-aos="fade-up-left" data-aos-duration="1000">
                       Surs Healthcare and Diagnostic Laboratory is an indegneous medical facility that was started way back in 2014 as a small single room clinic in Seeta Mukono and operated as Jubilee Medical Center It was later moved to Kampala in 2016 and rebranded as SURS HEALTHCARE, Surs has grown over the years fron a single room to a big facility and having a sister branch in Kinawataka Mbuya.
@@ -364,7 +364,7 @@
     
     </div>
     
-    <div class="container">
+    <div class="container" style="margin-bottom: 50px;">
       <center>
         <h3 class="slide-title" data-aos="fade-up-left">Our Services</h3>
       </center>
