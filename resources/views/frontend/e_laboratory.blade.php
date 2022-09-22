@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-E-Laboratory | Home Easy Online Shop
+E-Laboratory | Sure Health Online Shop
 @endsection 
 
 
@@ -17,7 +17,7 @@ E-Laboratory | Home Easy Online Shop
 
 
         <!-- === == TOP NAVIGATION == ==== -->
-       @include('frontend.common.vertical_menu')
+       @include('frontend.common.vertical_menu_lab')
         <!-- ===== ==== TOP NAVIGATION : END ==== ===== -->
 
 
@@ -36,6 +36,7 @@ E-Laboratory | Home Easy Online Shop
 
               <div class="item">
                 <div class="products special-product">
+                  @if(count($special_offer) > 0)
 
               @foreach($special_offer as $product)
   <div class="product">
@@ -54,7 +55,7 @@ E-Laboratory | Home Easy Online Shop
           <div class="product-info">
             <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">{{ $product->product_name_en }}</a></h3>
             <div class="rating rateit-small"></div>
- <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+ <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span> </div>
             <!-- /.product-price -->
 
           </div>
@@ -67,6 +68,7 @@ E-Laboratory | Home Easy Online Shop
 
   </div>
                   @endforeach <!-- // end special offer foreach -->
+                  @endif
 
 
 
@@ -110,6 +112,7 @@ E-Laboratory | Home Easy Online Shop
 
               <div class="item">
                 <div class="products special-product">
+                  @if(count($special_deals)>0)
 
    @foreach($special_deals as $product)
       <div class="product">
@@ -128,7 +131,7 @@ E-Laboratory | Home Easy Online Shop
               <div class="product-info">
                 <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">{{ $product->product_name_en }}</a></h3>
                 <div class="rating rateit-small"></div>
-                <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span> </div>
                 <!-- /.product-price -->
 
               </div>
@@ -141,6 +144,7 @@ E-Laboratory | Home Easy Online Shop
 
       </div>
       @endforeach <!-- // end special deals foreach -->
+      @endif
 
 
 
@@ -194,7 +198,7 @@ E-Laboratory | Home Easy Online Shop
 
         <div id="hero">
           <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-
+    @if(count($sliders) >0)
     @foreach($sliders as $slider)
     <div class="item" style="background-image: url({{ asset($slider->slider_img) }});">
       <div class="container-fluid">
@@ -210,6 +214,7 @@ E-Laboratory | Home Easy Online Shop
     </div>
     <!-- /.item -->
     @endforeach
+    @endif
 
 
           </div>
@@ -250,7 +255,7 @@ E-Laboratory | Home Easy Online Shop
                       <h4 class="info-box-heading green">free shipping</h4>
                     </div>
                   </div>
-                  <h6 class="text">Shipping on orders over $99</h6>
+                  <h6 class="text">Shipping on orders over UGX9900</h6>
                 </div>
               </div>
               <!-- .col -->
@@ -262,7 +267,7 @@ E-Laboratory | Home Easy Online Shop
                       <h4 class="info-box-heading green">Special Sale</h4>
                     </div>
                   </div>
-                  <h6 class="text">Extra $5 off on all items </h6>
+                  <h6 class="text">Extra UGX5000 off on all items </h6>
                 </div>
               </div>
               <!-- .col -->
@@ -289,10 +294,11 @@ E-Laboratory | Home Easy Online Shop
             <h3 class="new-product-title pull-left">New Products</h3>
             <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
               <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
-
+              @if(count($categories) > 0)
               @foreach($categories as $category)
-  <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
+              <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
               @endforeach
+              @endif
               <!-- <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a></li>
 
               <li><a data-transition-type="backSlide" href="#apple" data-toggle="tab">Shoes</a></li> -->
@@ -306,7 +312,7 @@ E-Laboratory | Home Easy Online Shop
             <div class="tab-pane in active" id="all">
               <div class="product-slider">
                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
-
+                  @if(count($products) > 0)
                   @foreach($products as $product)
                   <div class="item item-carousel">
                     <div class="products">
@@ -339,9 +345,9 @@ E-Laboratory | Home Easy Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
          @else
- <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price">UGX {{ $product->discount_price }} </span> <span class="price-before-discount">UGX {{ $product->selling_price }}</span> </div>
          @endif
 
 
@@ -378,7 +384,7 @@ E-Laboratory | Home Easy Online Shop
                   </div>
                   <!-- /.item -->
                   @endforeach<!--  // end all optionproduct foreach  -->
-
+                 @endif
 
 
 
@@ -391,7 +397,7 @@ E-Laboratory | Home Easy Online Shop
 
 
 
-
+            @if(count($categories) > 0)
             @foreach($categories as $category)
             <div class="tab-pane" id="category{{ $category->id }}">
               <div class="product-slider">
@@ -434,9 +440,9 @@ E-Laboratory | Home Easy Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
          @else
- <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX {{ $product->selling_price }}</span> </div>
          @endif
 
 
@@ -489,7 +495,7 @@ E-Laboratory | Home Easy Online Shop
             <!-- /.tab-pane -->
             @endforeach <!-- end categor foreach -->
 
-
+           @endif
 
 
 
@@ -499,7 +505,7 @@ E-Laboratory | Home Easy Online Shop
         <!-- /.scroll-tabs -->
         <!-- ============================================== SCROLL TABS : END ============================================== -->
         <!-- ============================================== WIDE PRODUCTS ============================================== -->
-        <div class="wide-banners wow fadeInUp outer-bottom-xs">
+        {{-- <div class="wide-banners wow fadeInUp outer-bottom-xs">
           <div class="row">
             <div class="col-md-7 col-sm-7">
               <div class="wide-banner cnt-strip">
@@ -517,7 +523,7 @@ E-Laboratory | Home Easy Online Shop
             <!-- /.col -->
           </div>
           <!-- /.row -->
-        </div>
+        </div> --}}
         <!-- /.wide-banners -->
 
         <!-- ============================================== WIDE PRODUCTS : END ============================================== -->
@@ -531,7 +537,7 @@ E-Laboratory | Home Easy Online Shop
           <h3 class="section-title">Featured products</h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
 
-
+            @if(count($featured) > 0)
             @foreach($featured as $product)
             <div class="item item-carousel">
                     <div class="products">
@@ -564,9 +570,9 @@ E-Laboratory | Home Easy Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
          @else
- <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX{{ $product->selling_price }}</span> </div>
          @endif
 
 
@@ -604,7 +610,7 @@ E-Laboratory | Home Easy Online Shop
                   </div>
             <!-- /.item -->
             @endforeach
-
+@endif
 
           </div>
           <!-- /.home-owl-carousel -->
@@ -617,7 +623,7 @@ E-Laboratory | Home Easy Online Shop
 
 
         <!-- == === skip_product_0 PRODUCTS == ==== -->
-
+         @if(!is_null($skip_category_0))
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">{{ $skip_category_0->category_name_en }}
             </h3>
@@ -656,9 +662,9 @@ E-Laboratory | Home Easy Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
          @else
- <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX {{ $product->selling_price }}</span> </div>
          @endif
 
 
@@ -701,6 +707,7 @@ E-Laboratory | Home Easy Online Shop
           </div>
           <!-- /.home-owl-carousel -->
         </section>
+        @endif
         <!-- /.section -->
         <!-- == ==== skip_product_0 PRODUCTS : END ==== === -->
 
@@ -712,7 +719,7 @@ E-Laboratory | Home Easy Online Shop
 
 
 <!-- == === skip_product_1 PRODUCTS == ==== -->
-
+       @if(!is_null($skip_category_1))
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title"> {{ $skip_category_1->category_name_en }}
             </h3>
@@ -751,9 +758,9 @@ E-Laboratory | Home Easy Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
          @else
- <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX{{ $product->selling_price }}</span> </div>
          @endif
 
 
@@ -796,6 +803,7 @@ E-Laboratory | Home Easy Online Shop
           </div>
           <!-- /.home-owl-carousel -->
         </section>
+        @endif
         <!-- /.section -->
         <!-- == ==== skip_product_1 PRODUCTS : END ==== === -->
 
@@ -821,7 +829,7 @@ E-Laboratory | Home Easy Online Shop
                 <div class="image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/home-banner.jpg') }}" alt=""> </div>
                 <div class="strip strip-text">
                   <div class="strip-inner">
-                    <h2 class="text-right">New Mens Fashion<br>
+                    <h2 class="text-right">New Affordable Tests<br>
                       <span class="shopping-needs">Save up to 40% off</span></h2>
                   </div>
                 </div>
@@ -846,7 +854,7 @@ E-Laboratory | Home Easy Online Shop
 
 
 <!-- == === skip_brand_product_1 PRODUCTS == ==== -->
-
+@if(!is_null($skip_brand_1))
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">{{ $skip_brand_1->brand_name_en }}
             </h3>
@@ -885,9 +893,9 @@ E-Laboratory | Home Easy Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
          @else
- <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX {{ $product->selling_price }}</span> </div>
          @endif
 
 
@@ -928,6 +936,7 @@ E-Laboratory | Home Easy Online Shop
           </div>
           <!-- /.home-owl-carousel -->
         </section>
+        @endif
         <!-- /.section -->
         <!-- == ==== skip_brand_product_1 PRODUCTS : END ==== === -->
 
@@ -945,7 +954,7 @@ E-Laboratory | Home Easy Online Shop
 
         <!-- ============================================== BEST SELLER ============================================== -->
 
-        <div class="best-deal wow fadeInUp outer-bottom-xs">
+        {{-- <div class="best-deal wow fadeInUp outer-bottom-xs">
           <h3 class="section-title">Best seller</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
@@ -967,7 +976,7 @@ E-Laboratory | Home Easy Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX45000 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -995,7 +1004,7 @@ E-Laboratory | Home Easy Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX45000 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1027,7 +1036,7 @@ E-Laboratory | Home Easy Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX450.99 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1055,7 +1064,7 @@ E-Laboratory | Home Easy Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX45000 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1087,7 +1096,7 @@ E-Laboratory | Home Easy Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX450.99 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1115,7 +1124,7 @@ E-Laboratory | Home Easy Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX450.99 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1147,7 +1156,7 @@ E-Laboratory | Home Easy Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX450.99 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1175,7 +1184,7 @@ E-Laboratory | Home Easy Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX450.99 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1192,12 +1201,12 @@ E-Laboratory | Home Easy Online Shop
             </div>
           </div>
           <!-- /.sidebar-widget-body -->
-        </div>
+        </div> --}}
         <!-- /.sidebar-widget -->
         <!-- ============================================== BEST SELLER : END ============================================== -->
 
         <!-- ============================================== BLOG SLIDER ============================================== -->
-        <section class="section latest-blog outer-bottom-vs wow fadeInUp">
+        {{-- <section class="section latest-blog outer-bottom-vs wow fadeInUp">
           <h3 class="section-title">latest form blog</h3>
           <div class="blog-slider-container outer-top-xs">
             <div class="owl-carousel blog-slider custom-carousel">
@@ -1234,12 +1243,12 @@ E-Laboratory | Home Easy Online Shop
             <!-- /.owl-carousel -->
           </div>
           <!-- /.blog-slider-container -->
-        </section>
+        </section> --}}
         <!-- /.section -->
         <!-- ============================================== BLOG SLIDER : END ============================================== -->
 
         <!-- ============================================== FEATURED PRODUCTS ============================================== -->
-        <section class="section wow fadeInUp new-arriavls">
+        {{-- <section class="section wow fadeInUp new-arriavls">
           <h3 class="section-title">New Arrivals</h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
             <div class="item item-carousel">
@@ -1257,7 +1266,7 @@ E-Laboratory | Home Easy Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450900 </span> <span class="price-before-discount">UGX 800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1299,7 +1308,7 @@ E-Laboratory | Home Easy Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450990 </span> <span class="price-before-discount">UGX 800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1341,7 +1350,7 @@ E-Laboratory | Home Easy Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1383,7 +1392,7 @@ E-Laboratory | Home Easy Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX45000 </span> <span class="price-before-discount">UGX 800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1425,7 +1434,7 @@ E-Laboratory | Home Easy Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX45099 </span> <span class="price-before-discount">$ 800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1467,7 +1476,7 @@ E-Laboratory | Home Easy Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX45099 </span> <span class="price-before-discount">UGX 800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1495,7 +1504,7 @@ E-Laboratory | Home Easy Online Shop
             <!-- /.item -->
           </div>
           <!-- /.home-owl-carousel -->
-        </section>
+        </section> --}}
         <!-- /.section -->
         <!-- ============================================== FEATURED PRODUCTS : END ============================================== -->
 
@@ -1505,7 +1514,7 @@ E-Laboratory | Home Easy Online Shop
     </div>
     <!-- /.row -->
     <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-  @include('frontend.body.brands')
+  {{-- @include('frontend.body.brands') --}}
     <!-- /.logo-slider -->
     <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
   </div>

@@ -194,7 +194,7 @@ My Checkout
 
 <strong>CartTotal: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Shipping Fee: </strong> <span>$0</span> <hr>
+<strong>Shipping Fee: </strong> <span>0</span> <hr>
 
 <strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
@@ -248,19 +248,19 @@ My Checkout
 
 
 		    <div class="row">
-		    	<div class="col-md-4">
+		    	<div class="col-md-7">
 		   <label for="">Flutter Wave</label> 		
        <input type="radio" name="payment_method" value="wave">
-       <img src="{{ asset('frontend/assets/images/payments/4.png') }}">		    		
+       <img style="width: 150px; height:30px" src="https://res.cloudinary.com/dtlkiv19d/image/upload/v1662837580/Kallery/aaapp_zupkxn.png">		    		
 		    	</div> <!-- end col md 4 -->
 
-		    	<div class="col-md-4">
+		    	{{-- <div class="col-md-4">
 		    		<label for="">Card</label> 		
        <input type="radio" name="payment_method" value="card">	
 		<img src="{{ asset('frontend/assets/images/payments/3.png') }}">    		
-		    	</div> <!-- end col md 4 -->
+		    	</div> <!-- end col md 4 --> --}}
 
-		    	<div class="col-md-4">
+		    	<div class="col-md-5">
 		    		<label for="">Cash</label> 		
        <input type="radio" name="payment_method" value="cash">	
 		  <img src="{{ asset('frontend/assets/images/payments/6.png') }}">  		
@@ -305,9 +305,9 @@ My Checkout
  <script type="text/javascript">
 
  //Amounts
- $('#shippingFee').text('$' + $('#shippingFee').text());
- $('#grandTotal').text('$'+$('#cartTotal').text());
- $('#cartTotal').text('$'+$('#cartTotal').text())
+ $('#shippingFee').text('UGX' + $('#shippingFee').text());
+ $('#grandTotal').text('UGX'+$('#cartTotal').text());
+ $('#cartTotal').text('UGX'+$('#cartTotal').text())
 
 
       $(document).ready(function() {
@@ -363,11 +363,11 @@ My Checkout
 	*Manage Station shipping prices
 	*/
 	$('select[name="state_id"]').on('change', function(){
-		let cartTotal = parseFloat($('#cartTotal').text().substring(1));
+		let cartTotal = parseFloat($('#cartTotal').text().substring(3));
 		let shippingCost = parseFloat(JSON.parse(localStorage.getItem('stations')).find((station) => station.id == parseInt($(this).val())).shipping_amount);
 		let grandTotal = parseFloat(cartTotal + shippingCost);
-		$('#shippingFee').text('$'+shippingCost);
-		$('#grandTotal').text('$'+grandTotal);
+		$('#shippingFee').text('UGX'+shippingCost);
+		$('#grandTotal').text('UGX'+grandTotal);
 		$('input[name=grand_total]').val(grandTotal);
 	});
     </script>

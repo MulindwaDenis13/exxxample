@@ -1,11 +1,11 @@
 @php
 
-$categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
+$categories = App\Models\Category::where('identifier', 'Pharmacy')->orderBy('category_name_en','ASC')->get();
 @endphp
 
 
  <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+          <div class="head"><i class="icon fa fa-align-justify fa-fw"></i>Pharmacy Categories</div>
           <nav class="yamm megamenu-horizontal">
             <ul class="nav">
 
@@ -59,7 +59,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
 
 
 
-
+{{-- 
               <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-paper-plane"></i>Kids and Babies</a>
                 <!-- /.dropdown-menu --> </li>
               <!-- /.menu-item -->
@@ -72,7 +72,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
 
               <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-envira"></i>Home and Garden</a>
                 <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
+              <!-- /.menu-item --> --}}
 
             </ul>
             <!-- /.nav -->

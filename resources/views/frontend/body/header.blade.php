@@ -112,7 +112,7 @@
               <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
     <div class="basket-item-count"><span class="count" id="cartQty"> </span></div>
               <div class="total-price-basket"> <span class="lbl">cart -</span>
-                <span class="total-price"> <span class="sign">$</span>
+                <span class="total-price"> <span class="sign">UGX</span>
                 <span class="value" id="cartSubTotal"> </span> </span> </div>
             </div>
             </a>
@@ -168,7 +168,7 @@
   </a> </li>
 
 <!--   // Get Category Table Data -->
-  @php
+  {{-- @php
   $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
   @endphp
 
@@ -212,16 +212,18 @@
             @endforeach <!-- // End SubCategory Foreach -->
 
 
-            <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/top-menu-banner.jpg') }}" alt=""> </div>
+            {{-- <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/top-menu-banner.jpg') }}" alt=""> </div> --}}
             <!-- /.yamm-content -->
-          </div>
+          {{-- </div>
         </div>
       </li>
     </ul>
   </li>
-  @endforeach <!-- // End Category Foreach -->
+  @endforeach --}}
 
-                <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
+  <li class="dropdown  navbar-right special-menu"> <a href="{{route('pharmacy')}}">e-pharmacy</a> </li>
+
+                <li class="dropdown  navbar-right special-menu"> <a href="{{route('laboratory')}}">e-laboratory</a> </li>
 
  <li class="dropdown  navbar-right special-menu"> <a href="{{ route('home.blog') }}">Blog</a> </li>
 
