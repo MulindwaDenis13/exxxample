@@ -32,9 +32,9 @@
 			<div class="col-md-4">
 
 	 <div class="form-group">
-	<h5>Brand Select <span class="text-danger">*</span></h5>
+	<h5>Brand Select <span class="">*</span></h5>
 	<div class="controls">
-		<select name="brand_id" class="form-control" required="" >
+		<select name="brand_id" class="form-control">
 			<option value="" selected="" disabled="">Select Brand</option>
 			@foreach($brands as $brand)
  <option value="{{ $brand->id }}">{{ $brand->brand_name_en }}</option>
@@ -71,9 +71,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-	<h5>SubCategory Select <span class="text-danger">*</span></h5>
+	<h5>SubCategory Select <span class="">*</span></h5>
 	<div class="controls">
-		<select name="subcategory_id" class="form-control" required="" >
+		<select name="subcategory_id" class="form-control">
 			<option value="" selected="" disabled="">Select SubCategory</option>
 
 		</select>
@@ -93,9 +93,9 @@
 			<div class="col-md-4">
 
 	 <div class="form-group">
-	<h5>SubSubCategory Select <span class="text-danger">*</span></h5>
+	<h5>SubSubCategory Select <span class="">*</span></h5>
 	<div class="controls">
-		<select name="subsubcategory_id" class="form-control" required="" >
+		<select name="subsubcategory_id" class="form-control">
 			<option value="" selected="" disabled="">Select SubSubCategory</option>
 
 		</select>
@@ -141,7 +141,7 @@
 
 
 <div class="row"> <!-- start 3RD row  -->
-			<div class="col-md-4">
+			{{-- <div class="col-md-4">
 
 	  <div class="form-group">
 			<h5>Product Code <span class="text-danger">*</span></h5>
@@ -151,11 +151,11 @@
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
 	 	  </div>
-		</div>
+		</div> --}}
 
-			</div> <!-- end col md 4 -->
+			</div> <!-- end col md 6 -->
 
-			<div class="col-md-4">
+			<div class="col-md-6">
 
 				 <div class="form-group">
 			<h5>Product Quantity <span class="text-danger">*</span></h5>
@@ -167,15 +167,15 @@
 	 	  </div>
 		</div>
 
-			</div> <!-- end col md 4 -->
+			</div> <!-- end col md 6-->
 
 
-			<div class="col-md-4">
+			<div class="col-md-6">
 
 				 <div class="form-group">
-			<h5>Product Tags<span class="text-danger">*</span></h5>
+			<h5>Product Tags<span class="">*</span></h5>
 			<div class="controls">
-	 <input type="text" name="product_tags_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" required="">
+	 <input type="text" name="product_tags_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput">
      @error('product_tags_en')
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -211,9 +211,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Size<span class="text-danger">*</span></h5>
+			<h5>Product Size<span class="">*</span></h5>
 			<div class="controls">
-	 <input type="text" name="product_size_en" class="form-control" value="Small,Midium,Large" data-role="tagsinput" required="">
+	 <input type="text" name="product_size_en" class="form-control" value="Small,Midium,Large" data-role="tagsinput">
      @error('product_size_en')
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -246,9 +246,9 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Product Color<span class="text-danger">*</span></h5>
+			<h5>Product Color<span class="">*</span></h5>
 			<div class="controls">
-	 <input type="text" name="product_color_en" class="form-control" value="red,Black,Amet" data-role="tagsinput" required="">
+	 <input type="text" name="product_color_en" class="form-control" value="red,Black,Amet" data-role="tagsinput">
      @error('product_color_en')
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -295,9 +295,9 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Product Discount Price <span class="text-danger">*</span></h5>
+			<h5>Product Discount Price <span class="text-dangre">*</span></h5>
 			<div class="controls">
-	 <input type="text" name="discount_price" class="form-control"  required="">
+	 <input type="text" name="discount_price" class="form-control" required=''>
      @error('discount_price')
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -326,9 +326,9 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Multiple Image <span class="text-danger">*</span></h5>
+			<h5>Multiple Image <span class="">*</span></h5>
 			<div class="controls">
-	 <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg" required="" >
+	 <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg">
      @error('multi_img')
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -350,9 +350,9 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Short Description English <span class="text-danger">*</span></h5>
+			<h5>Short Description English <span class="">*</span></h5>
 			<div class="controls">
-	<textarea name="short_descp_en" id="textarea" class="form-control" required placeholder="Textarea text"></textarea>
+	<textarea name="short_descp_en" id="textarea" class="form-control" placeholder="Textarea text"></textarea>
 	 		 </div>
 		</div>
 
@@ -380,9 +380,9 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Long Description English <span class="text-danger">*</span></h5>
+			<h5>Long Description English <span class="">*</span></h5>
 			<div class="controls">
-	<textarea id="editor1" name="long_descp_en" rows="10" cols="80" required="">
+	<textarea id="editor1" name="long_descp_en" rows="10" cols="80">
 		Long Description English
 						</textarea>
 	 		 </div>

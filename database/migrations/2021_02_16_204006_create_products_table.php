@@ -35,7 +35,7 @@ class CreateProductsTable extends Migration
             $table->string('discount_price')->nullable();
             $table->string('short_descp_en');
             // $table->string('short_descp_hin');
-            $table->string('long_descp_en');
+            $table->longText('long_descp_en');
             // $table->string('long_descp_hin');
             $table->string('product_thambnail');
             $table->integer('hot_deals')->nullable();

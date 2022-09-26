@@ -27,7 +27,7 @@
 		</div>
 		<div>
 			<p class="text-mute mt-20 mb-0 font-size-16">Today's Sale</p>
-			<h3 class="text-white mb-0 font-weight-500">${{ $today  }} <small class="text-success"><i class="fa fa-caret-up"></i> Usd</small></h3>
+			<h3 class="text-white mb-0 font-weight-500">UGX{{ $today  }} <small class="text-success"><i class="fa fa-caret-up"></i></small></h3>
 		</div>
 	</div>
 </div>
@@ -40,7 +40,7 @@
 		</div>
 		<div>
 			<p class="text-mute mt-20 mb-0 font-size-16">Monthly Sale </p>
-			<h3 class="text-white mb-0 font-weight-500">${{ $month }} <small class="text-success"><i class="fa fa-caret-up"></i> Usd</small></h3>
+			<h3 class="text-white mb-0 font-weight-500">UGX{{ $month }} <small class="text-success"><i class="fa fa-caret-up"></i></small></h3>
 		</div>
 	</div>
 </div>
@@ -53,7 +53,7 @@
 		</div>
 		<div>
 			<p class="text-mute mt-20 mb-0 font-size-16">Yearly Sale </p>
-			<h3 class="text-white mb-0 font-weight-500">${{ $year }} <small class="text-danger"><i class="fa fa-caret-down"></i> Usd</small></h3>
+			<h3 class="text-white mb-0 font-weight-500">UGX{{ $year }} <small class="text-danger"><i class="fa fa-caret-down"></i></small></h3>
 		</div>
 	</div>
 </div>

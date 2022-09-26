@@ -41,7 +41,7 @@ class ProductController extends Controller
       	// 'product_name_hin' => $request->product_name_hin,
       	'product_slug_en' =>  strtolower(str_replace(' ', '-', $request->product_name_en)),
       	// 'product_slug_hin' => str_replace(' ', '-', $request->product_name_hin),
-      	'product_code' => $request->product_code,
+      	'product_code' => "SH"."-".rand(1000, 9999),
 
       	'product_qty' => $request->product_qty,
       	'product_tags_en' => $request->product_tags_en,

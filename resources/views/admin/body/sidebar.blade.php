@@ -32,21 +32,21 @@
         </li>
 
         @php
-        $brand = (auth()->guard('admin')->user()->brand == 1);
-        $category = (auth()->guard('admin')->user()->category == 1);
-        $product = (auth()->guard('admin')->user()->product == 1);
-        $slider = (auth()->guard('admin')->user()->slider == 1);
-        $coupons = (auth()->guard('admin')->user()->coupons == 1);
-        $shipping = (auth()->guard('admin')->user()->shipping == 1);
-        $blog = (auth()->guard('admin')->user()->blog == 1);
-        $setting = (auth()->guard('admin')->user()->setting == 1);
-        $returnorder = (auth()->guard('admin')->user()->returnorder == 1);
-        $review = (auth()->guard('admin')->user()->review == 1);
-        $orders = (auth()->guard('admin')->user()->orders == 1);
-        $stock = (auth()->guard('admin')->user()->stock == 1);
-        $reports = (auth()->guard('admin')->user()->reports == 1);
-        $alluser = (auth()->guard('admin')->user()->alluser == 1);
-        $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
+        // $brand = (auth()->guard('admin')->user()->brand == 1);
+        // $category = (auth()->guard('admin')->user()->category == 1);
+        // $product = (auth()->guard('admin')->user()->product == 1);
+        // $slider = (auth()->guard('admin')->user()->slider == 1);
+        // $coupons = (auth()->guard('admin')->user()->coupons == 1);
+        // $shipping = (auth()->guard('admin')->user()->shipping == 1);
+        // $blog = (auth()->guard('admin')->user()->blog == 1);
+        // $setting = (auth()->guard('admin')->user()->setting == 1);
+        // $returnorder = (auth()->guard('admin')->user()->returnorder == 1);
+        // $review = (auth()->guard('admin')->user()->review == 1);
+        // $orders = (auth()->guard('admin')->user()->orders == 1);
+        // $stock = (auth()->guard('admin')->user()->stock == 1);
+        // $reports = (auth()->guard('admin')->user()->reports == 1);
+        // $alluser = (auth()->guard('admin')->user()->alluser == 1);
+        // $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
         @endphp
 

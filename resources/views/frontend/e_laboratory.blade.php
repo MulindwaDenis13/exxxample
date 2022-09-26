@@ -27,7 +27,9 @@ E-Laboratory | Sure Health Online Shop
 
         <!-- ============================================== SPECIAL OFFER ============================================== -->
 
-        <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+        @include('frontend.common.special_offer')
+
+        {{-- <div class="sidebar-widget outer-bottom-small wow fadeInUp">
           <h3 class="section-title">Special Offer</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
@@ -89,7 +91,7 @@ E-Laboratory | Sure Health Online Shop
             </div>
           </div>
           <!-- /.sidebar-widget-body -->
-        </div>
+        </div> --}}
         <!-- /.sidebar-widget -->
         <!-- ============================================== SPECIAL OFFER : END ============================================== -->
 
