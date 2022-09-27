@@ -13,8 +13,8 @@
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
 				<li><a href="#">Home</a></li>
-				<li><a href="#">Clothing</a></li>
-				<li class='active'>Floral Print Buttoned</li>
+				<li><a href="#">Health</a></li>
+				<li class='active'>Products</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -169,10 +169,10 @@
 	<div class="col-sm-6">
 		<div class="price-box">
        @if ($product->discount_price == NULL)
-       <span class="price">${{ $product->selling_price }}</span>
+       <span class="price">UGX{{ $product->selling_price }}</span>
        @else
-       <span class="price">${{ $product->discount_price }}</span>
-			<span class="price-strike">${{ $product->selling_price }}</span>
+       <span class="price">UGX{{ $product->discount_price }}</span>
+			<span class="price-strike">UGX{{ $product->selling_price }}</span>
        @endif
 
 
@@ -184,9 +184,9 @@
 				<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="#">
 				    <i class="fa fa-heart"></i>
 				</a>
-				<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
+				{{-- <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
 				   <i class="fa fa-signal"></i>
-				</a>
+				</a> --}}
 				<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="E-mail" href="#">
 				    <i class="fa fa-envelope"></i>
 				</a>
@@ -475,14 +475,14 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
  @if ($product->discount_price == NULL)
 <div class="product-price">
 				<span class="price">
-					${{ $product->selling_price }}	 </span>
+					UGX{{ $product->selling_price }}	 </span>
 			</div><!-- /.product-price -->
  @else
 
 <div class="product-price">
 				<span class="price">
-					${{ $product->discount_price }}	 </span>
-			  <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+					UGX{{ $product->discount_price }}	 </span>
+			  <span class="price-before-discount">UGX {{ $product->selling_price }}</span>
 			</div><!-- /.product-price -->
  @endif
 
