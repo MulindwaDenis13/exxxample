@@ -64,8 +64,10 @@ public function SliderUpdate(Request $request){
     	$old_img = $request->old_image;
 
     	if ($request->file('slider_img')) {
+			if (file_exists($old_img)){
+				unlink($old_img);
+			}
 
-    	unlink($old_img);
     	$image = $request->file('slider_img');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
     	Image::make($image)->resize(870,370)->save('upload/slider/'.$name_gen);
@@ -108,7 +110,9 @@ public function SliderUpdate(Request $request){
     public function SliderDelete($id){
     	$slider = Slider::findOrFail($id);
     	$img = $slider->slider_img;
-    	unlink($img);
+		if (file_exists($img)){
+			unlink($img);
+		}
     	Slider::findOrFail($id)->delete();
 
     	$notification = array(

@@ -72,19 +72,22 @@ class ProductController extends Controller
 
       ////////// Multiple Image Upload Start ///////////
 
-      $images = $request->file('multi_img');
-      foreach ($images as $img) {
-      	$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-    	Image::make($img)->resize(917,1000)->save('upload/products/multi-image/'.$make_name);
-    	$uploadPath = 'upload/products/multi-image/'.$make_name;
+	  if (isset($request->multi_img) && !empty($request->multi_img)){
 
-    	MultiImg::insert([
-
-    		'product_id' => $product_id,
-    		'photo_name' => $uploadPath,
-    		'created_at' => Carbon::now(),
-
-    	]);
+		$images = $request->file('multi_img');
+		foreach ($images as $img) {
+			$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+		  Image::make($img)->resize(917,1000)->save('upload/products/multi-image/'.$make_name);
+		  $uploadPath = 'upload/products/multi-image/'.$make_name;
+  
+		  MultiImg::insert([
+  
+			  'product_id' => $product_id,
+			  'photo_name' => $uploadPath,
+			  'created_at' => Carbon::now(),
+  
+		  ]);
+	  }
 
       }
 
@@ -176,23 +179,27 @@ class ProductController extends Controller
 
 /// Multiple Image Update
 	public function MultiImageUpdate(Request $request){
-		$imgs = $request->multi_img;
+		if (isset($request->multi_img) && !empty($request->multi_img)){
+			$imgs = $request->multi_img;
 
-		foreach ($imgs as $id => $img) {
-	    $imgDel = MultiImg::findOrFail($id);
-	    unlink($imgDel->photo_name);
-
-    	$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-    	Image::make($img)->resize(917,1000)->save('upload/products/multi-image/'.$make_name);
-    	$uploadPath = 'upload/products/multi-image/'.$make_name;
-
-    	MultiImg::where('id',$id)->update([
-    		'photo_name' => $uploadPath,
-    		'updated_at' => Carbon::now(),
-
-    	]);
-
-	 } // end foreach
+			foreach ($imgs as $id => $img) {
+			$imgDel = MultiImg::findOrFail($id);
+			if(file_exists($imgDel->photo_name)){
+				unlink($imgDel->photo_name);
+			}
+	
+			$make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+			Image::make($img)->resize(917,1000)->save('upload/products/multi-image/'.$make_name);
+			$uploadPath = 'upload/products/multi-image/'.$make_name;
+	
+			MultiImg::where('id',$id)->update([
+				'photo_name' => $uploadPath,
+				'updated_at' => Carbon::now(),
+	
+			]);
+	
+		 } // end foreach
+		}
 
        $notification = array(
 			'message' => 'Product Image Updated Successfully',
@@ -208,7 +215,9 @@ class ProductController extends Controller
  public function ThambnailImageUpdate(Request $request){
  	$pro_id = $request->id;
  	$oldImage = $request->old_img;
- 	unlink($oldImage);
+	if (file_exists($oldImage)){
+		unlink($oldImage);
+	}
 
     $image = $request->file('product_thambnail');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -234,7 +243,9 @@ class ProductController extends Controller
  //// Multi Image Delete ////
      public function MultiImageDelete($id){
      	$oldimg = MultiImg::findOrFail($id);
-     	unlink($oldimg->photo_name);
+		if (file_exists($oldimg->photo_name)) {
+			unlink($oldimg->photo_name);
+		}
      	MultiImg::findOrFail($id)->delete();
 
      	$notification = array(
@@ -274,12 +285,16 @@ class ProductController extends Controller
 
      public function ProductDelete($id){
      	$product = Product::findOrFail($id);
-     	unlink($product->product_thambnail);
+		if(file_exists($product->product_thumbnail)){
+			unlink($product->product_thambnail);
+		}
      	Product::findOrFail($id)->delete();
 
      	$images = MultiImg::where('product_id',$id)->get();
      	foreach ($images as $img) {
-     		unlink($img->photo_name);
+			if (file_exists($img->photo_name)) {
+				unlink($img->photo_name);
+			}
      		MultiImg::where('product_id',$id)->delete();
      	}
 
