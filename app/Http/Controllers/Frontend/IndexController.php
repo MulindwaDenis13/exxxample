@@ -180,76 +180,106 @@ class IndexController extends Controller
 
 	}
 
+	private function category_identifier($products, $identifier){
+		$filtered = [];
+		foreach($products as $product){
+			if(!is_null($product->category) && $product->category->identifier === $identifier){
+				$filtered[] = $product;
+			}
+		}
+		return $filtered;
+	}
+
 	// display E-pharmacy view
 	public function pharmacyView(Request $request)
 	{
 		$blogpost = BlogPost::latest()->get();
-    	$products = Product::where('status',1)->orderBy('id','DESC')->limit(6)->get();
+
+		$pharmacy_products = Product::with('category')->where('status',1)->orderBy('id','DESC')->limit(30)->get();
+    	$products = $this->category_identifier($pharmacy_products, 'Pharmacy');
+
     	$sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
     	$categories = Category::where('identifier', 'Pharmacy')->orderBy('category_name_en','ASC')->get();
 
-    	$featured = Product::where('featured',1)->orderBy('id','DESC')->limit(6)->get();
-    	$hot_deals = Product::where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(3)->get();
+    	$pharmacy_featured = Product::with('category')->where('featured',1)->orderBy('id','DESC')->limit(10)->get();
+		$featured = $this->category_identifier($pharmacy_featured, 'Pharmacy');
 
-    	$special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(6)->get();
+    	// $pharmacy_hot_deals = Product::with('category')->where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(10)->get();
+		// $hot_deals = $this->category_identifier($pharmacy_hot_deals, 'Pharmacy');
 
-    	$special_deals = Product::where('special_deals',1)->orderBy('id','DESC')->limit(3)->get();
+    	// $pharmacy_special_offer = Product::with('category')->where('special_offer',1)->orderBy('id','DESC')->limit(10)->get();
+		// $special_offer = $this->category_identifier($pharmacy_special_offer, 'Pharmacy');
+
+    	// $pharmacy_special_deals = Product::with('category')->where('special_deals',1)->orderBy('id','DESC')->limit(10)->get();
+		// $special_deals = $this->category_identifier($pharmacy_special_deals, 'Pharmacy');
 
     	$skip_category_0 = Category::where('identifier','Pharmacy')->skip(0)->first();
 		$skip_product_0 = [];
 		if (!is_null($skip_category_0)) {
-			$skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
+			$pharmacy_skip_product_0 = Product::with('category')->where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
+			$skip_product_0 = $this->category_identifier($pharmacy_skip_product_0, 'Pharmacy');
 		}
 
     	$skip_category_1 = Category::where('identifier','Pharmacy')->skip(1)->first();
 		$skip_product_1 = [];
 		if (!is_null($skip_category_1)) {
-			$skip_product_1 = Product::where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
+			$pharmacy_skip_product_1 = Product::with('category')->where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
+			$skip_product_1 = $this->category_identifier($pharmacy_skip_product_1, 'Pharmacy');
 		}
 
-    	$skip_brand_1 = Brand::skip(1)->first();
-		$skip_brand_product_1 = [];
-		if (!is_null($skip_brand_1)){
-			$skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
-		}
+    	// $skip_brand_1 = Brand::skip(1)->first();
+		// $skip_brand_product_1 = [];
+		// if (!is_null($skip_brand_1)){
+		// 	$skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
+		// }
 
-    	return view('frontend.e_pharmacy',compact('categories','sliders','products','featured','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1','blogpost'));
+    	return view('frontend.e_pharmacy',compact('categories','sliders','products','featured','skip_category_0','skip_product_0','skip_category_1','skip_product_1','blogpost'));
 	}
 
 		// display E-laboratory view
 		public function laboratoryView(Request $request)
 		{
 			$blogpost = BlogPost::latest()->get();
-			$products = Product::where('status',1)->orderBy('id','DESC')->limit(6)->get();
+
+			$laboratory_products = Product::with('category')->where('status',1)->orderBy('id','DESC')->limit(30)->get();
+			$products = $this->category_identifier($laboratory_products, 'Laboratory');
+	
 			$sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
 			$categories = Category::where('identifier', 'Laboratory')->orderBy('category_name_en','ASC')->get();
 	
-			$featured = Product::where('featured',1)->orderBy('id','DESC')->limit(6)->get();
-			$hot_deals = Product::where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(3)->get();
+			$laboratory_featured = Product::with('category')->where('featured',1)->orderBy('id','DESC')->limit(10)->get();
+			$featured = $this->category_identifier($laboratory_featured, 'Laboratory');
 	
-			$special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(6)->get();
+			// $pharmacy_hot_deals = Product::with('category')->where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(10)->get();
+			// $hot_deals = $this->category_identifier($pharmacy_hot_deals, 'Pharmacy');
 	
-			$special_deals = Product::where('special_deals',1)->orderBy('id','DESC')->limit(3)->get();
+			// $pharmacy_special_offer = Product::with('category')->where('special_offer',1)->orderBy('id','DESC')->limit(10)->get();
+			// $special_offer = $this->category_identifier($pharmacy_special_offer, 'Pharmacy');
+	
+			// $pharmacy_special_deals = Product::with('category')->where('special_deals',1)->orderBy('id','DESC')->limit(10)->get();
+			// $special_deals = $this->category_identifier($pharmacy_special_deals, 'Pharmacy');
 	
 			$skip_category_0 = Category::where('identifier','Laboratory')->skip(0)->first();
 			$skip_product_0 = [];
 			if (!is_null($skip_category_0)) {
-				$skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
+				$laboratory_skip_product_0 = Product::with('category')->where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
+				$skip_product_0 = $this->category_identifier($laboratory_skip_product_0, 'Laboratory');
 			}
 	
 			$skip_category_1 = Category::where('identifier','Laboratory')->skip(1)->first();
 			$skip_product_1 = [];
-			if(!is_null($skip_category_1)){
-				$skip_product_1 = Product::where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
+			if (!is_null($skip_category_1)) {
+				$laboratory_skip_product_1 = Product::with('category')->where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
+				$skip_product_1 = $this->category_identifier($laboratory_skip_product_1, 'Laboratory');
 			}
 	
-			$skip_brand_1 = Brand::skip(1)->first();
-			$skip_brand_product_1 = [];
-			if (!is_null($skip_brand_1)){
-				$skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
-			}
+			// $skip_brand_1 = Brand::skip(1)->first();
+			// $skip_brand_product_1 = [];
+			// if (!is_null($skip_brand_1)){
+			// 	$skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
+			// }
 	
-			return view('frontend.e_laboratory',compact('categories','sliders','products','featured','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1','blogpost'));
+			return view('frontend.e_laboratory',compact('categories','sliders','products','featured','skip_category_0','skip_product_0','skip_category_1','skip_product_1','blogpost'));
 		}
 
 

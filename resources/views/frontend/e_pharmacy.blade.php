@@ -102,7 +102,8 @@ E-Pharmacy | Sure Health Online Shop
 
         <!-- ============================================== SPECIAL DEALS ============================================== -->
 
-        <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+@include('frontend.common.special_deals')
+        {{-- <div class="sidebar-widget outer-bottom-small wow fadeInUp">
           <h3 class="section-title">Special Deals</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
@@ -153,7 +154,7 @@ E-Pharmacy | Sure Health Online Shop
             </div>
           </div>
           <!-- /.sidebar-widget-body -->
-        </div>
+        </div> --}}
         <!-- /.sidebar-widget -->
         <!-- ============================================== SPECIAL DEALS : END ============================================== -->
         <!-- ============================================== NEWSLETTER ============================================== -->
@@ -850,7 +851,7 @@ E-Pharmacy | Sure Health Online Shop
 
 
 <!-- == === skip_brand_product_1 PRODUCTS == ==== -->
-@if(!is_null($skip_brand_1))
+{{-- @if(!is_null($skip_brand_1))
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">{{ $skip_brand_1->brand_name_en }}
             </h3>
@@ -932,7 +933,7 @@ E-Pharmacy | Sure Health Online Shop
           </div>
           <!-- /.home-owl-carousel -->
         </section>
-        @endif
+        @endif --}}
         <!-- /.section -->
         <!-- == ==== skip_brand_product_1 PRODUCTS : END ==== === -->
 

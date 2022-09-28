@@ -2,7 +2,7 @@
 @section('content')
 @section('title')
 E-Laboratory | Sure Health Online Shop
-@endsection 
+@endsection
 
 
 
@@ -11,7 +11,6 @@ E-Laboratory | Sure Health Online Shop
     <div class="row">
       <!-- ============================================== SIDEBAR ============================================== -->
       <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
-
 
 
 
@@ -26,7 +25,6 @@ E-Laboratory | Sure Health Online Shop
         <!-- === === HOT DEALS: END ====== ===== -->
 
         <!-- ============================================== SPECIAL OFFER ============================================== -->
-
         @include('frontend.common.special_offer')
 
         {{-- <div class="sidebar-widget outer-bottom-small wow fadeInUp">
@@ -38,8 +36,7 @@ E-Laboratory | Sure Health Online Shop
 
               <div class="item">
                 <div class="products special-product">
-                  @if(count($special_offer) > 0)
-
+@if(count($special_offer) >0)
               @foreach($special_offer as $product)
   <div class="product">
     <div class="product-micro">
@@ -70,9 +67,8 @@ E-Laboratory | Sure Health Online Shop
 
   </div>
                   @endforeach <!-- // end special offer foreach -->
-                  @endif
 
-
+@endif
 
 
 
@@ -106,7 +102,8 @@ E-Laboratory | Sure Health Online Shop
 
         <!-- ============================================== SPECIAL DEALS ============================================== -->
 
-        <div class="sidebar-widget outer-bottom-small wow fadeInUp">
+@include('frontend.common.special_deals')
+        {{-- <div class="sidebar-widget outer-bottom-small wow fadeInUp">
           <h3 class="section-title">Special Deals</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
@@ -114,8 +111,7 @@ E-Laboratory | Sure Health Online Shop
 
               <div class="item">
                 <div class="products special-product">
-                  @if(count($special_deals)>0)
-
+@if(count($special_deals) >0)
    @foreach($special_deals as $product)
       <div class="product">
         <div class="product-micro">
@@ -146,8 +142,7 @@ E-Laboratory | Sure Health Online Shop
 
       </div>
       @endforeach <!-- // end special deals foreach -->
-      @endif
-
+@endif
 
 
 
@@ -159,7 +154,7 @@ E-Laboratory | Sure Health Online Shop
             </div>
           </div>
           <!-- /.sidebar-widget-body -->
-        </div>
+        </div> --}}
         <!-- /.sidebar-widget -->
         <!-- ============================================== SPECIAL DEALS : END ============================================== -->
         <!-- ============================================== NEWSLETTER ============================================== -->
@@ -200,7 +195,7 @@ E-Laboratory | Sure Health Online Shop
 
         <div id="hero">
           <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-    @if(count($sliders) >0)
+@if(count($sliders)>0)
     @foreach($sliders as $slider)
     <div class="item" style="background-image: url({{ asset($slider->slider_img) }});">
       <div class="container-fluid">
@@ -216,8 +211,7 @@ E-Laboratory | Sure Health Online Shop
     </div>
     <!-- /.item -->
     @endforeach
-    @endif
-
+@endif
 
           </div>
           <!-- /.owl-carousel -->
@@ -257,7 +251,7 @@ E-Laboratory | Sure Health Online Shop
                       <h4 class="info-box-heading green">free shipping</h4>
                     </div>
                   </div>
-                  <h6 class="text">Shipping on orders over UGX9900</h6>
+                  <h6 class="text">Shipping on orders over UGX2000</h6>
                 </div>
               </div>
               <!-- .col -->
@@ -269,7 +263,7 @@ E-Laboratory | Sure Health Online Shop
                       <h4 class="info-box-heading green">Special Sale</h4>
                     </div>
                   </div>
-                  <h6 class="text">Extra UGX5000 off on all items </h6>
+                  <h6 class="text">Extra UGX500 off on all items </h6>
                 </div>
               </div>
               <!-- .col -->
@@ -296,9 +290,9 @@ E-Laboratory | Sure Health Online Shop
             <h3 class="new-product-title pull-left">New Products</h3>
             {{-- <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
               <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
-              @if(count($categories) > 0)
+@if(count($categories))
               @foreach($categories as $category)
-              <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
+  <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
               @endforeach
               @endif
               <!-- <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a></li>
@@ -314,7 +308,7 @@ E-Laboratory | Sure Health Online Shop
             <div class="tab-pane in active" id="all">
               <div class="product-slider">
                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
-                  @if(count($products) > 0)
+                @if(count($products)>0)
                   @foreach($products as $product)
                   <div class="item item-carousel">
                     <div class="products">
@@ -349,7 +343,7 @@ E-Laboratory | Sure Health Online Shop
          @if ($product->discount_price == NULL)
     <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
          @else
- <div class="product-price"> <span class="price">UGX {{ $product->discount_price }} </span> <span class="price-before-discount">UGX {{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX{{ $product->selling_price }}</span> </div>
          @endif
 
 
@@ -386,7 +380,7 @@ E-Laboratory | Sure Health Online Shop
                   </div>
                   <!-- /.item -->
                   @endforeach<!--  // end all optionproduct foreach  -->
-                 @endif
+@endif
 
 
 
@@ -399,7 +393,7 @@ E-Laboratory | Sure Health Online Shop
 
 
 
-            @if(count($categories) > 0)
+@if(count($categories))
             @foreach($categories as $category)
             <div class="tab-pane" id="category{{ $category->id }}">
               <div class="product-slider">
@@ -497,7 +491,7 @@ E-Laboratory | Sure Health Online Shop
             <!-- /.tab-pane -->
             @endforeach <!-- end categor foreach -->
 
-           @endif
+@endif
 
 
 
@@ -539,7 +533,7 @@ E-Laboratory | Sure Health Online Shop
           <h3 class="section-title">Featured products</h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
 
-            @if(count($featured) > 0)
+@if(count($featured) >0)
             @foreach($featured as $product)
             <div class="item item-carousel">
                     <div class="products">
@@ -572,7 +566,7 @@ E-Laboratory | Sure Health Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price">UGX{{ $product->selling_price }} </span>  </div>
          @else
  <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX{{ $product->selling_price }}</span> </div>
          @endif
@@ -612,7 +606,8 @@ E-Laboratory | Sure Health Online Shop
                   </div>
             <!-- /.item -->
             @endforeach
-@endif
+            @endif
+
 
           </div>
           <!-- /.home-owl-carousel -->
@@ -625,7 +620,7 @@ E-Laboratory | Sure Health Online Shop
 
 
         <!-- == === skip_product_0 PRODUCTS == ==== -->
-         @if(!is_null($skip_category_0))
+@if(!is_null($skip_category_0))
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">{{ $skip_category_0->category_name_en }}
             </h3>
@@ -721,7 +716,7 @@ E-Laboratory | Sure Health Online Shop
 
 
 <!-- == === skip_product_1 PRODUCTS == ==== -->
-       @if(!is_null($skip_category_1))
+@if(!is_null($skip_category_1))
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title"> {{ $skip_category_1->category_name_en }}
             </h3>
@@ -762,7 +757,7 @@ E-Laboratory | Sure Health Online Shop
          @if ($product->discount_price == NULL)
     <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
          @else
- <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX{{ $product->selling_price }}</span> </div>
+ <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX {{ $product->selling_price }}</span> </div>
          @endif
 
 
@@ -831,7 +826,7 @@ E-Laboratory | Sure Health Online Shop
                 <div class="image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/home-banner.jpg') }}" alt=""> </div>
                 <div class="strip strip-text">
                   <div class="strip-inner">
-                    <h2 class="text-right">New Affordable Tests<br>
+                    <h2 class="text-right">New Drugs In<br>
                       <span class="shopping-needs">Save up to 40% off</span></h2>
                   </div>
                 </div>
@@ -856,7 +851,7 @@ E-Laboratory | Sure Health Online Shop
 
 
 <!-- == === skip_brand_product_1 PRODUCTS == ==== -->
-@if(!is_null($skip_brand_1))
+{{-- @if(!is_null($skip_brand_1))
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">{{ $skip_brand_1->brand_name_en }}
             </h3>
@@ -895,7 +890,7 @@ E-Laboratory | Sure Health Online Shop
           <div class="description"></div>
 
          @if ($product->discount_price == NULL)
-    <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
+    <div class="product-price"> <span class="price"> uGX{{ $product->selling_price }} </span>  </div>
          @else
  <div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">UGX {{ $product->selling_price }}</span> </div>
          @endif
@@ -938,7 +933,7 @@ E-Laboratory | Sure Health Online Shop
           </div>
           <!-- /.home-owl-carousel -->
         </section>
-        @endif
+        @endif --}}
         <!-- /.section -->
         <!-- == ==== skip_brand_product_1 PRODUCTS : END ==== === -->
 
@@ -978,7 +973,7 @@ E-Laboratory | Sure Health Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> UGX45000 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX450.99 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1006,7 +1001,7 @@ E-Laboratory | Sure Health Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> UGX45000 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX450.99 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1066,7 +1061,7 @@ E-Laboratory | Sure Health Online Shop
                           <div class="product-info">
                             <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
-                            <div class="product-price"> <span class="price"> UGX45000 </span> </div>
+                            <div class="product-price"> <span class="price"> UGX450.99 </span> </div>
                             <!-- /.product-price -->
 
                           </div>
@@ -1268,7 +1263,7 @@ E-Laboratory | Sure Health Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> UGX450900 </span> <span class="price-before-discount">UGX 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450.99 </span> <span class="price-before-discount">UGX 800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1310,7 +1305,7 @@ E-Laboratory | Sure Health Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> UGX450990 </span> <span class="price-before-discount">UGX 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450.99 </span> <span class="price-before-discount">UGX800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1352,7 +1347,7 @@ E-Laboratory | Sure Health Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> UGX450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450.99 </span> <span class="price-before-discount">UGX800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1394,7 +1389,7 @@ E-Laboratory | Sure Health Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> UGX45000 </span> <span class="price-before-discount">UGX 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450.99 </span> <span class="price-before-discount">UGX800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1436,7 +1431,7 @@ E-Laboratory | Sure Health Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> UGX45099 </span> <span class="price-before-discount">$ 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450.99 </span> <span class="price-before-discount">UGX800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
@@ -1478,7 +1473,7 @@ E-Laboratory | Sure Health Online Shop
                     <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
-                    <div class="product-price"> <span class="price"> UGX45099 </span> <span class="price-before-discount">UGX 800</span> </div>
+                    <div class="product-price"> <span class="price"> UGX450.99 </span> <span class="price-before-discount">UGX800</span> </div>
                     <!-- /.product-price -->
 
                   </div>
