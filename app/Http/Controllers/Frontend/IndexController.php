@@ -193,16 +193,15 @@ class IndexController extends Controller
 	// display E-pharmacy view
 	public function pharmacyView(Request $request)
 	{
-		$blogpost = BlogPost::latest()->get();
+		// $blogpost = BlogPost::latest()->get();
 
-		$pharmacy_products = Product::with('category')->where('status',1)->orderBy('id','DESC')->limit(30)->get();
-    	$products = $this->category_identifier($pharmacy_products, 'Pharmacy');
+    	$categories = Category::where('identifier', 'Pharmacy')->orderBy('category_name_en','ASC')->get();
+		
+    	$products = Product::whereIn('category_id',$categories->pluck('id'))->where('status',1)->orderBy('id','DESC')->limit(30)->get();
 
     	$sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
-    	$categories = Category::where('identifier', 'Pharmacy')->orderBy('category_name_en','ASC')->get();
 
-    	$pharmacy_featured = Product::with('category')->where('featured',1)->orderBy('id','DESC')->limit(10)->get();
-		$featured = $this->category_identifier($pharmacy_featured, 'Pharmacy');
+		$featured = Product::whereIn('category_id',$categories->pluck('id'))->where('featured',1)->orderBy('id','DESC')->limit(10)->get();
 
     	// $pharmacy_hot_deals = Product::with('category')->where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(10)->get();
 		// $hot_deals = $this->category_identifier($pharmacy_hot_deals, 'Pharmacy');
@@ -216,16 +215,16 @@ class IndexController extends Controller
     	$skip_category_0 = Category::where('identifier','Pharmacy')->skip(0)->first();
 		$skip_product_0 = [];
 		if (!is_null($skip_category_0)) {
-			$pharmacy_skip_product_0 = Product::with('category')->where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
-			$skip_product_0 = $this->category_identifier($pharmacy_skip_product_0, 'Pharmacy');
+			$skip_product_0 = Product::whereIn('category_id',$categories->pluck('id'))->where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
 		}
 
     	$skip_category_1 = Category::where('identifier','Pharmacy')->skip(1)->first();
 		$skip_product_1 = [];
 		if (!is_null($skip_category_1)) {
-			$pharmacy_skip_product_1 = Product::with('category')->where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
-			$skip_product_1 = $this->category_identifier($pharmacy_skip_product_1, 'Pharmacy');
+			$skip_product_1 =Product::whereIn('category_id',$categories->pluck('id'))->where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
 		}
+
+		$paginated_products = Product::where('status',1)->whereIn('category_id',$categories->pluck('id'))->latest()->paginate(30);
 
     	// $skip_brand_1 = Brand::skip(1)->first();
 		// $skip_brand_product_1 = [];
@@ -233,22 +232,20 @@ class IndexController extends Controller
 		// 	$skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
 		// }
 
-    	return view('frontend.e_pharmacy',compact('categories','sliders','products','featured','skip_category_0','skip_product_0','skip_category_1','skip_product_1','blogpost'));
+    	return view('frontend.e_pharmacy',compact('categories','sliders','products','featured','skip_category_0','skip_product_0','skip_category_1','skip_product_1','paginated_products'));
 	}
 
 		// display E-laboratory view
 		public function laboratoryView(Request $request)
 		{
-			$blogpost = BlogPost::latest()->get();
+			// $blogpost = BlogPost::latest()->get();
+			$categories = Category::where('identifier', 'Laboratory')->orderBy('category_name_en','ASC')->get();
 
-			$laboratory_products = Product::with('category')->where('status',1)->orderBy('id','DESC')->limit(30)->get();
-			$products = $this->category_identifier($laboratory_products, 'Laboratory');
+			$products = Product::whereIn('category_id',$categories->pluck('id'))->where('status',1)->orderBy('id','DESC')->limit(30)->get();
 	
 			$sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
-			$categories = Category::where('identifier', 'Laboratory')->orderBy('category_name_en','ASC')->get();
 	
-			$laboratory_featured = Product::with('category')->where('featured',1)->orderBy('id','DESC')->limit(10)->get();
-			$featured = $this->category_identifier($laboratory_featured, 'Laboratory');
+			$featured = Product::whereIn('category_id',$categories->pluck('id'))->where('featured',1)->orderBy('id','DESC')->limit(10)->get();
 	
 			// $pharmacy_hot_deals = Product::with('category')->where('hot_deals',1)->where('discount_price','!=',NULL)->orderBy('id','DESC')->limit(10)->get();
 			// $hot_deals = $this->category_identifier($pharmacy_hot_deals, 'Pharmacy');
@@ -262,16 +259,17 @@ class IndexController extends Controller
 			$skip_category_0 = Category::where('identifier','Laboratory')->skip(0)->first();
 			$skip_product_0 = [];
 			if (!is_null($skip_category_0)) {
-				$laboratory_skip_product_0 = Product::with('category')->where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
-				$skip_product_0 = $this->category_identifier($laboratory_skip_product_0, 'Laboratory');
+				$skip_product_0 = Product::whereIn('category_id',$categories->pluck('id'))->where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
 			}
 	
 			$skip_category_1 = Category::where('identifier','Laboratory')->skip(1)->first();
 			$skip_product_1 = [];
 			if (!is_null($skip_category_1)) {
-				$laboratory_skip_product_1 = Product::with('category')->where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
-				$skip_product_1 = $this->category_identifier($laboratory_skip_product_1, 'Laboratory');
+				$skip_product_1 = Product::whereIn('category_id',$categories->pluck('id'))->where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
 			}
+
+			$paginated_products = Product::where('status',1)->whereIn('category_id',$categories->pluck('id'))->latest()->paginate(30);
+			// dd($paginated_products);
 	
 			// $skip_brand_1 = Brand::skip(1)->first();
 			// $skip_brand_product_1 = [];
@@ -279,7 +277,7 @@ class IndexController extends Controller
 			// 	$skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
 			// }
 	
-			return view('frontend.e_laboratory',compact('categories','sliders','products','featured','skip_category_0','skip_product_0','skip_category_1','skip_product_1','blogpost'));
+			return view('frontend.e_laboratory',compact('categories','sliders','products','featured','skip_category_0','skip_product_0','skip_category_1','skip_product_1','paginated_products'));
 		}
 
 

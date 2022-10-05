@@ -94,7 +94,7 @@ E-Pharmacy | Sure Health Online Shop
 
 
         <!-- ===== ===== PRODUCT TAGS ==== ====== -->
-   @include('frontend.common.product_tags')
+   {{-- @include('frontend.common.product_tags') --}}
         <!-- ==== ===== PRODUCT TAGS : END ======= ==== -->
 
 
@@ -158,7 +158,7 @@ E-Pharmacy | Sure Health Online Shop
         <!-- /.sidebar-widget -->
         <!-- ============================================== SPECIAL DEALS : END ============================================== -->
         <!-- ============================================== NEWSLETTER ============================================== -->
-        <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small">
+        {{-- <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small">
           <h3 class="section-title">Newsletters</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <p>Sign Up for Our Newsletter!</p>
@@ -171,16 +171,16 @@ E-Pharmacy | Sure Health Online Shop
             </form>
           </div>
           <!-- /.sidebar-widget-body -->
-        </div>
+        </div> --}}
         <!-- /.sidebar-widget -->
         <!-- ============================================== NEWSLETTER: END ============================================== -->
 
         <!-- == ==== Testimonials=== ===== -->
-         @include('frontend.common.testimonials')
+         {{-- @include('frontend.common.testimonials') --}}
 
         <!-- === ======== Testimonials: END ==== =========== -->
 
-        <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
+        {{-- <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div> --}}
       </div>
       <!-- /.sidemenu-holder -->
       <!-- ============================================== SIDEBAR : END ============================================== -->
@@ -1201,7 +1201,498 @@ E-Pharmacy | Sure Health Online Shop
         </div> --}}
         <!-- /.sidebar-widget -->
         <!-- ============================================== BEST SELLER : END ============================================== -->
+        <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp" id="lab-products">
+          <div class="more-info-tab clearfix ">
+              <h3 class="new-product-title pull-left">Pharmacy Products</h3>
+              {{-- <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
+    <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
+@if (count($categories))
+    @foreach ($categories as $category)
+<li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
+    @endforeach
+    @endif
+    <!-- <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a></li>
 
+    <li><a data-transition-type="backSlide" href="#apple" data-toggle="tab">Shoes</a></li> -->
+  </ul> --}}
+              <!-- /.nav-tabs -->
+          </div>
+          <div class="tab-content outer-top-xs">
+              @php
+                  $first_ten_products = array_slice($paginated_products->toArray(), 0, 9);
+                  $second_ten_products = array_slice($first_ten_products['data'], 10, 19);
+                  $third_ten_products = array_slice($first_ten_products['data'], 20, 29);
+              @endphp
+
+
+
+              <div class="tab-pane in active" id="all">
+                  <div class="product-slider">
+                      <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4"
+                          style="margin-bottom: 60px; border-bottom:1px solid #eee">
+                          @if (count($first_ten_products) > 0)
+                              @foreach ($first_ten_products['data'] as $product)
+                                  <div class="item item-carousel">
+                                      <div class="products">
+                                          <div class="product">
+                                              <div class="product-image">
+                                                  <div class="image"> <a
+                                                          href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}"><img
+                                                              src="{{ asset($product['product_thambnail']) }}"
+                                                              alt=""></a> </div>
+                                                  <!-- /.image -->
+
+                                                  @php
+                                                      $amount = $product['selling_price'] - $product['discount_price'];
+                                                      $discount = ($amount / $product['selling_price']) * 100;
+                                                  @endphp
+
+                                                  <div>
+                                                      @if ($product['discount_price'] == null)
+                                                          <div class="tag new"><span>new</span></div>
+                                                      @else
+                                                          <div class="tag hot">
+                                                              <span>{{ round($discount) }}%</span>
+                                                          </div>
+                                                      @endif
+                                                  </div>
+                                              </div>
+
+                                              <!-- /.product-image -->
+
+                                              <div class="product-info text-left">
+                                                  <h3 class="name"><a
+                                                          href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}">
+                                                          {{ $product['product_name_en'] }}
+                                                      </a></h3>
+                                                  <div class="rating rateit-small"></div>
+                                                  <div class="description"></div>
+
+                                                  @if ($product['discount_price'] == null)
+                                                      <div class="product-price"> <span class="price">
+                                                              UGX{{ $product['selling_price'] }} </span>
+                                                      </div>
+                                                  @else
+                                                      <div class="product-price"> <span class="price">
+                                                              UGX{{ $product['discount_price'] }} </span>
+                                                          <span
+                                                              class="price-before-discount">UGX{{ $product['selling_price'] }}</span>
+                                                      </div>
+                                                  @endif
+
+
+                                                  <!-- /.product-price -->
+
+                                              </div>
+                                              <!-- /.product-info -->
+                                              <div class="cart clearfix animate-effect">
+                                                  <div class="action">
+                                                      <ul class="list-unstyled">
+                                                          <li class="add-cart-button btn-group">
+
+
+                                                              <button class="btn btn-primary icon"
+                                                                  type="button" title="Add Cart"
+                                                                  data-toggle="modal"
+                                                                  data-target="#exampleModal"
+                                                                  id="{{ $product['id'] }}"
+                                                                  onclick="productView(this.id)"> <i
+                                                                      class="fa fa-shopping-cart"></i>
+                                                              </button>
+
+                                                              <button class="btn btn-primary cart-btn"
+                                                                  type="button">Add to cart</button>
+                                                          </li>
+
+
+
+                                                          <button class="btn btn-primary icon"
+                                                              type="button" title="Wishlist"
+                                                              id="{{ $product['id'] }}"
+                                                              onclick="addToWishList(this.id)"> <i
+                                                                  class="fa fa-heart"></i> </button>
+
+                                                          <li class="lnk"> <a data-toggle="tooltip"
+                                                                  class="add-to-cart" href="detail.html"
+                                                                  title="Compare"> <i class="fa fa-signal"
+                                                                      aria-hidden="true"></i> </a> </li>
+                                                      </ul>
+                                                  </div>
+                                                  <!-- /.action -->
+                                              </div>
+                                              <!-- /.cart -->
+                                          </div>
+                                          <!-- /.product -->
+
+                                      </div>
+                                      <!-- /.products -->
+                                  </div>
+                                  <!-- /.item -->
+                              @endforeach
+                              <!--  // end all optionproduct foreach  -->
+                          @endif
+
+
+
+                      </div>
+                      <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4"
+                          style="margin-bottom: 60px; border-bottom:1px solid #eee">
+                          @if (count($second_ten_products) > 0)
+                              @foreach ($second_ten_products as $product)
+                                  <div class="item item-carousel">
+                                      <div class="products">
+                                          <div class="product">
+                                              <div class="product-image">
+                                                  <div class="image"> <a
+                                                          href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}"><img
+                                                              src="{{ asset($product['product_thambnail']) }}"
+                                                              alt=""></a> </div>
+                                                  <!-- /.image -->
+
+                                                  @php
+                                                      $amount = $product['selling_price'] - $product['discount_price'];
+                                                      $discount = ($amount / $product['selling_price']) * 100;
+                                                  @endphp
+
+                                                  <div>
+                                                      @if ($product['discount_price'] == null)
+                                                          <div class="tag new"><span>new</span></div>
+                                                      @else
+                                                          <div class="tag hot">
+                                                              <span>{{ round($discount) }}%</span>
+                                                          </div>
+                                                      @endif
+                                                  </div>
+                                              </div>
+
+                                              <!-- /.product-image -->
+
+                                              <div class="product-info text-left">
+                                                  <h3 class="name"><a
+                                                          href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}">
+                                                          {{ $product['product_name_en'] }}
+                                                      </a></h3>
+                                                  <div class="rating rateit-small"></div>
+                                                  <div class="description"></div>
+
+                                                  @if ($product['discount_price'] == null)
+                                                      <div class="product-price"> <span class="price">
+                                                              UGX{{ $product['selling_price'] }} </span>
+                                                      </div>
+                                                  @else
+                                                      <div class="product-price"> <span class="price">
+                                                              UGX{{ $product['discount_price'] }} </span>
+                                                          <span
+                                                              class="price-before-discount">UGX{{ $product['selling_price'] }}</span>
+                                                      </div>
+                                                  @endif
+
+
+                                                  <!-- /.product-price -->
+
+                                              </div>
+                                              <!-- /.product-info -->
+                                              <div class="cart clearfix animate-effect">
+                                                  <div class="action">
+                                                      <ul class="list-unstyled">
+                                                          <li class="add-cart-button btn-group">
+
+
+                                                              <button class="btn btn-primary icon"
+                                                                  type="button" title="Add Cart"
+                                                                  data-toggle="modal"
+                                                                  data-target="#exampleModal"
+                                                                  id="{{ $product['id'] }}"
+                                                                  onclick="productView(this.id)"> <i
+                                                                      class="fa fa-shopping-cart"></i>
+                                                              </button>
+
+                                                              <button class="btn btn-primary cart-btn"
+                                                                  type="button">Add to cart</button>
+                                                          </li>
+
+
+
+                                                          <button class="btn btn-primary icon"
+                                                              type="button" title="Wishlist"
+                                                              id="{{ $product['id'] }}"
+                                                              onclick="addToWishList(this.id)"> <i
+                                                                  class="fa fa-heart"></i> </button>
+
+                                                          <li class="lnk"> <a data-toggle="tooltip"
+                                                                  class="add-to-cart" href="detail.html"
+                                                                  title="Compare"> <i class="fa fa-signal"
+                                                                      aria-hidden="true"></i> </a> </li>
+                                                      </ul>
+                                                  </div>
+                                                  <!-- /.action -->
+                                              </div>
+                                              <!-- /.cart -->
+                                          </div>
+                                          <!-- /.product -->
+
+                                      </div>
+                                      <!-- /.products -->
+                                  </div>
+                                  <!-- /.item -->
+                              @endforeach
+                              <!--  // end all optionproduct foreach  -->
+                          @endif
+
+
+
+                      </div>
+                      <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4"
+                          style="margin-bottom: 60px; border-bottom:1px solid #eee">
+                          @if (count($third_ten_products) > 0)
+                              @foreach ($third_ten_products as $product)
+                                  <div class="item item-carousel">
+                                      <div class="products">
+                                          <div class="product">
+                                              <div class="product-image">
+                                                  <div class="image"> <a
+                                                          href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}"><img
+                                                              src="{{ asset($product['product_thambnail']) }}"
+                                                              alt=""></a> </div>
+                                                  <!-- /.image -->
+
+                                                  @php
+                                                      $amount = $product['selling_price'] - $product['discount_price'];
+                                                      $discount = ($amount / $product['selling_price']) * 100;
+                                                  @endphp
+
+                                                  <div>
+                                                      @if ($product['discount_price'] == null)
+                                                          <div class="tag new"><span>new</span></div>
+                                                      @else
+                                                          <div class="tag hot">
+                                                              <span>{{ round($discount) }}%</span>
+                                                          </div>
+                                                      @endif
+                                                  </div>
+                                              </div>
+
+                                              <!-- /.product-image -->
+
+                                              <div class="product-info text-left">
+                                                  <h3 class="name"><a
+                                                          href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}">
+                                                          {{ $product['product_name_en'] }}
+                                                      </a></h3>
+                                                  <div class="rating rateit-small"></div>
+                                                  <div class="description"></div>
+
+                                                  @if ($product['discount_price'] == null)
+                                                      <div class="product-price"> <span class="price">
+                                                              UGX{{ $product['selling_price'] }} </span>
+                                                      </div>
+                                                  @else
+                                                      <div class="product-price"> <span class="price">
+                                                              UGX{{ $product['discount_price'] }} </span>
+                                                          <span
+                                                              class="price-before-discount">UGX{{ $product['selling_price'] }}</span>
+                                                      </div>
+                                                  @endif
+
+
+                                                  <!-- /.product-price -->
+
+                                              </div>
+                                              <!-- /.product-info -->
+                                              <div class="cart clearfix animate-effect">
+                                                  <div class="action">
+                                                      <ul class="list-unstyled">
+                                                          <li class="add-cart-button btn-group">
+
+
+                                                              <button class="btn btn-primary icon"
+                                                                  type="button" title="Add Cart"
+                                                                  data-toggle="modal"
+                                                                  data-target="#exampleModal"
+                                                                  id="{{ $product['id'] }}"
+                                                                  onclick="productView(this.id)"> <i
+                                                                      class="fa fa-shopping-cart"></i>
+                                                              </button>
+
+                                                              <button class="btn btn-primary cart-btn"
+                                                                  type="button">Add to cart</button>
+                                                          </li>
+
+
+
+                                                          <button class="btn btn-primary icon"
+                                                              type="button" title="Wishlist"
+                                                              id="{{ $product['id'] }}"
+                                                              onclick="addToWishList(this.id)"> <i
+                                                                  class="fa fa-heart"></i> </button>
+
+                                                          <li class="lnk"> <a data-toggle="tooltip"
+                                                                  class="add-to-cart" href="detail.html"
+                                                                  title="Compare"> <i class="fa fa-signal"
+                                                                      aria-hidden="true"></i> </a> </li>
+                                                      </ul>
+                                                  </div>
+                                                  <!-- /.action -->
+                                              </div>
+                                              <!-- /.cart -->
+                                          </div>
+                                          <!-- /.product -->
+
+                                      </div>
+                                      <!-- /.products -->
+                                  </div>
+                                  <!-- /.item -->
+                              @endforeach
+                              <!--  // end all optionproduct foreach  -->
+                          @endif
+
+
+
+                      </div>
+                      <!-- /.home-owl-carousel -->
+                  </div>
+                  <!-- /.product-slider -->
+              </div>
+              <!-- /.tab-pane -->
+
+
+
+              @if (count($categories))
+                  @foreach ($categories as $category)
+                      <div class="tab-pane" id="category{{ $category->id }}">
+                          <div class="product-slider">
+                              <div class="owl-carousel home-owl-carousel custom-carousel owl-theme"
+                                  data-item="4">
+
+                                  @php
+                                      $catwiseProduct = App\Models\Product::where('category_id', $category->id)
+                                          ->orderBy('id', 'DESC')
+                                          ->get();
+                                  @endphp
+
+
+                                  @forelse($catwiseProduct as $product)
+                                      <div class="item item-carousel">
+                                          <div class="products">
+                                              <div class="product">
+                                                  <div class="product-image">
+                                                      <div class="image"> <a
+                                                              href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}"><img
+                                                                  src="{{ asset($product->product_thambnail) }}"
+                                                                  alt=""></a> </div>
+                                                      <!-- /.image -->
+
+                                                      @php
+                                                          $amount = $product->selling_price - $product->discount_price;
+                                                          $discount = ($amount / $product->selling_price) * 100;
+                                                      @endphp
+
+                                                      <div>
+                                                          @if ($product->discount_price == null)
+                                                              <div class="tag new"><span>new</span></div>
+                                                          @else
+                                                              <div class="tag hot">
+                                                                  <span>{{ round($discount) }}%</span>
+                                                              </div>
+                                                          @endif
+                                                      </div>
+                                                  </div>
+
+                                                  <!-- /.product-image -->
+
+                                                  <div class="product-info text-left">
+                                                      <h3 class="name"><a
+                                                              href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}">
+                                                              {{ $product->product_name_en }}
+                                                          </a></h3>
+                                                      <div class="rating rateit-small"></div>
+                                                      <div class="description"></div>
+
+                                                      @if ($product->discount_price == null)
+                                                          <div class="product-price"> <span class="price">
+                                                                  UGX{{ $product->selling_price }} </span>
+                                                          </div>
+                                                      @else
+                                                          <div class="product-price"> <span class="price">
+                                                                  UGX{{ $product->discount_price }} </span>
+                                                              <span class="price-before-discount">UGX
+                                                                  {{ $product->selling_price }}</span>
+                                                          </div>
+                                                      @endif
+
+
+                                                      <!-- /.product-price -->
+
+                                                  </div>
+                                                  <!-- /.product-info -->
+                                                  <div class="cart clearfix animate-effect">
+                                                      <div class="action">
+                                                          <ul class="list-unstyled">
+                                                              <li class="add-cart-button btn-group">
+
+                                                                  <button class="btn btn-primary icon"
+                                                                      type="button" title="Add Cart"
+                                                                      data-toggle="modal"
+                                                                      data-target="#exampleModal"
+                                                                      id="{{ $product->id }}"
+                                                                      onclick="productView(this.id)"> <i
+                                                                          class="fa fa-shopping-cart"></i>
+                                                                  </button>
+
+                                                                  <button class="btn btn-primary cart-btn"
+                                                                      type="button">Add to cart</button>
+                                                              </li>
+
+
+
+                                                              <button class="btn btn-primary icon"
+                                                                  type="button" title="Wishlist"
+                                                                  id="{{ $product->id }}"
+                                                                  onclick="addToWishList(this.id)"> <i
+                                                                      class="fa fa-heart"></i> </button>
+
+
+                                                              <li class="lnk"> <a data-toggle="tooltip"
+                                                                      class="add-to-cart" href="detail.html"
+                                                                      title="Compare"> <i
+                                                                          class="fa fa-signal"
+                                                                          aria-hidden="true"></i> </a> </li>
+                                                          </ul>
+                                                      </div>
+                                                      <!-- /.action -->
+                                                  </div>
+                                                  <!-- /.cart -->
+                                              </div>
+                                              <!-- /.product -->
+
+                                          </div>
+                                          <!-- /.products -->
+                                      </div>
+                                      <!-- /.item -->
+
+                                  @empty
+                                      <h5 class="text-danger">No Product Found</h5>
+                                  @endforelse
+                                  <!--  // end all optionproduct foreach  -->
+
+
+
+
+                              </div>
+                              <!-- /.home-owl-carousel -->
+                          </div>
+                          <!-- /.product-slider -->
+                      </div>
+                      <!-- /.tab-pane -->
+                  @endforeach <!-- end categor foreach -->
+                  {{$paginated_products->links()}}
+              @endif
+
+
+
+          </div>
+          <!-- /.tab-content -->
+      </div>
         <!-- ============================================== BLOG SLIDER ============================================== -->
         {{-- <section class="section latest-blog outer-bottom-vs wow fadeInUp">
           <h3 class="section-title">latest form blog</h3>
