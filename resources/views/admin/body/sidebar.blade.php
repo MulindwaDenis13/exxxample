@@ -49,6 +49,19 @@
         // $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
         @endphp
+                <li class="treeview {{ ($prefix == '/doctor')?'active':'' }}  ">
+                  <a href="#">
+                    <i data-feather="message-circle"></i>
+                    <span>Doctors</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li class="{{ ($route == 'all.doctor')? 'active':'' }}"><a href="{{ route('all.doctor') }}"><i class="ti-more"></i>All Doctor</a></li>
+        
+                  </ul>
+                </li>
 
 
        {{-- @if($brand == true) --}}

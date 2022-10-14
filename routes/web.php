@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\AdminUserController;
+use App\Http\Controllers\Backend\DoctorController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
@@ -107,6 +108,20 @@ Route::post('/update', [BrandController::class, 'BrandUpdate'])->name('brand.upd
 
 Route::get('/delete/{id}', [BrandController::class, 'BrandDelete'])->name('brand.delete');
 
+});
+
+//Admin Doctor routes
+Route::prefix('doctor')->group(function(){
+
+    Route::get('/view', [DoctorController::class, 'DoctorView'])->name('all.doctor');
+
+    Route::post('/store',[DoctorController::class,'DoctorStore'])->name('doctor.store');
+
+    Route::get('/edit/{id}',[DoctorController::class,'DoctorEdit'])->name('doctor.edit');
+
+    Route::post('/update', [DoctorController::class, 'DoctorUpdate'])->name('doctor.update');
+
+    Route::get('/delete/{id}', [DoctorController::class, 'DoctorDelete'])->name('doctor.delete');
 });
 
 // Admin Category all Routes
