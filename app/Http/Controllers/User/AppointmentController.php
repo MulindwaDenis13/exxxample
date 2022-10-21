@@ -20,6 +20,7 @@ class AppointmentController extends Controller
 
     public function initialise(Request $request)
     {
+        // dd($request->all());
             // Generate payment Reference
             $reference = Flutterwave::generateReference();
 
@@ -30,7 +31,7 @@ class AppointmentController extends Controller
                 'email' => request()->email,
                 'tx_ref' => $reference,
                 'currency' => "UGX",
-                'redirect_url' => route('callback.appointment'),
+                'redirect_url' => route('finish.appointment'),
                 'customer' => [
                     'email' => request()->email,
                     "phone_number" => request()->phone,
@@ -51,37 +52,34 @@ class AppointmentController extends Controller
             }
         
             Session::put('appointment_order', $request->all());
+
+            // dd(Session::get('appointment_order'));
         
             return redirect($payment['data']['link']);
     }
 
-     public function callback()
+     public function finish()
     {
         $status = request()->status;
 
         if($status == 'successful'){
             $transactionID = Flutterwave::getTransactionIDFromCallback();
-            $data = Flutterwave::verifyTransaction($transactionID);
             if(Session::has('appointment_order')){
                 $appointment_info = Session::get('appointment_order');
-                Appointment::insert([
+                Appointment::insertGetId([
                     'doctor_id' => $appointment_info['doctor_id'],
-                    'name' => $appointment_info['name'],
-                    'email' => $appointment['email'],
-                    'phone_number' => $appointment['phone'],
                     'amount' => 30000,
-                    'transaction_id' => $transactionID
+                    'transaction_id' => $transactionID,
+                    'user_id' => auth()->user()->id,
+                    'approved' => 0
                 ]);
-
-            return redirect()->route('consultation');
+                return redirect()->route('consultation');
+            }elseif($status == 'cancelled'){
+                return 'Payment Cancelled';
+            } else {
+                return 'Payment Failed';
             }
-        }        elseif ($status ==  'cancelled'){
-            //Put desired action/code after transaction has been cancelled here
-            return 'Payment Cancelled';
         }
-        else{
-            //Put desired action/code after transaction has failed here
-            return 'Payment Failed';
-        }
+
     }
 }

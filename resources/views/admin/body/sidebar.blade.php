@@ -141,6 +141,22 @@
           </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/consult')?'active':'' }}  ">
+          <a href="#">
+            <i data-feather="file"></i>
+            <span>Appointments</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'all.consultations')? 'active':'' }}"><a href="{{ route('all.consultations') }}"><i class="ti-more"></i>Manage Appointments</a></li>
+
+
+
+          </ul>
+        </li>
+
         {{-- @else --}}
         {{-- @endif --}}
 

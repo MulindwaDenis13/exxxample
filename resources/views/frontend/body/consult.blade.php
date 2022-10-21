@@ -32,13 +32,13 @@
 <body>
     <div class="row m-2">
         @foreach ($doctors as $item)
-        <div class="col-md-8">
-            <div class="row space-16">&nbsp;</div>
-            <div class="row">
-                <div class="col-sm-4">
+        <div class="col-md-4">
+            <div class="">&nbsp;</div>
+            <div class="">
+                <div class="">
                     <div class="thumbnail">
                         <div class="caption text-center"
-                            onclick="location.href='https://flow.microsoft.com/en-us/connectors/shared_slack/slack/'">
+                            onclick="">
                             <div class="position-relative">
                                 <img src="{{asset($item->image)}}"
                                     style="width:72px;height:72px;" />

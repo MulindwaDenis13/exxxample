@@ -221,7 +221,7 @@
   </li>
   @endforeach --}}
 
-  <li class="dropdown  navbar-right special-menu"> <a href="{{route('consultation')}}">e-consultation</a> </li>
+  <li class="dropdown  navbar-right special-menu"> <a href="{{auth()->check() ? route('consultation') : route('login')}}">e-consultation</a> </li>
 
   <li class="dropdown  navbar-right special-menu"> <a href="{{route('pharmacy')}}">e-pharmacy</a> </li>
 

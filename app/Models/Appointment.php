@@ -13,15 +13,19 @@ class Appointment extends Model
 
     protected $fillable = [
         'doctor_id',
-        'name',
-        'phone_number',
         'amount',
         'transaction_id',
-        'email'
+        'user_id',
+        'approved'
     ];
 
     public function doctor()
     {
         return $this->belongsTo(Doctor::class,'doctor_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 }

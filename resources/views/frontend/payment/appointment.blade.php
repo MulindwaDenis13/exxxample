@@ -90,7 +90,7 @@ Appointment Payment
 		 	@else
             <form method="POST" action="{{route('appointment.pay')}}">
                 @csrf
-                <label for="card-element">
+                {{-- <label for="card-element"> --}}
                   <input type="hidden" name="doctor_id" value="{{$doctor}}">
 
                   <div class="form-group">
@@ -100,19 +100,19 @@ Appointment Payment
   
                   <div class="form-group">
                       <label class="info-title" for="exampleInputEmail1"><b>Full Name</b>  <span>*</span></label>
-                      <input type="text" name="name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" required="">
+                      <input type="text" name="name" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Full Name" required="" value={{auth()->user()->name}}>
                   </div> 
       
                   <div class="form-group">
                       <label class="info-title" for="exampleInputEmail1"><b>Phone number</b>  <span>*</span></label>
-                      <input type="text" name="phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone Number" required="">
+                      <input type="text" name="phone" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Phone Number" required="" value={{auth()->user()->phone}}>
                   </div> 
   
                   <div class="form-group">
                       <label class="info-title" for="exampleInputEmail1"><b>Email</b>  <span>*</span></label>
-                      <input type="text" name="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" required="">
+                      <input type="text" name="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Email" required="" value={{auth()->user()->email}}>
                   </div>
-                </label>
+                {{-- </label> --}}
     
                 <button class="btn btn-primary" type="submit">Submit Payment</button>
             </form>

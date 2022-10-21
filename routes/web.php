@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Backend\DoctorController;
+use App\Http\Controllers\Backend\ConsultationController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
@@ -108,6 +109,17 @@ Route::get('/edit/{id}', [BrandController::class, 'BrandEdit'])->name('brand.edi
 Route::post('/update', [BrandController::class, 'BrandUpdate'])->name('brand.update');
 
 Route::get('/delete/{id}', [BrandController::class, 'BrandDelete'])->name('brand.delete');
+
+});
+
+// admin consultation routes
+Route::prefix('consultations')->group(function(){
+
+    Route::get('/view',[ConsultationController::class, 'manageAppointment'])->name('all.consultations');
+
+    Route::get('/confirm/{id}',[ConsultationController::class,'confirm'])->name('consultation.inactive');
+
+    Route::get('/deactiavte/{id}',[ConsultationController::class,'deactivate'])->name('consultation.active');
 
 });
 
@@ -568,4 +580,5 @@ Route::get('/appointment/{id}',[AppointmentController::class,'openAppointmentVie
 
 Route::post('/initialise-appointment',[AppointmentController::class,'initialise'])->name('appointment.pay');
 
-Route::get('appointment/call',[AppointmentController::class, 'callback'])->name('callback.appointment');
+Route::get('/finish/appointment',[AppointmentController::class,'finish'])->name('finish.appointment');
+
