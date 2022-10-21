@@ -280,6 +280,11 @@ class IndexController extends Controller
 			return view('frontend.e_laboratory',compact('categories','sliders','products','featured','skip_category_0','skip_product_0','skip_category_1','skip_product_1','paginated_products'));
 		}
 
+		public function consultView()
+		{
+			return view('frontend.e_consultation');
+		}
+
 
 
 }

@@ -61,7 +61,6 @@ class FlutterWaveController extends Controller
 
         //if payment is successful
         if ($status ==  'successful') {
-        
         $transactionID = Flutterwave::getTransactionIDFromCallback();
         $data = Flutterwave::verifyTransaction($transactionID);
 

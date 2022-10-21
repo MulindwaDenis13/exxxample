@@ -32,6 +32,7 @@ use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\FlutterWaveController;
+use App\Http\Controllers\User\AppointmentController;
 
 use App\Http\Controllers\User\AllUserController;
 /*
@@ -559,3 +560,12 @@ Route::get('/e-pharmacy', [IndexController::class, 'PharmacyView'])->name('pharm
 
 // E-laboratory Route
 Route::get('/e-laboratory', [IndexController::class, 'laboratoryView'])->name('laboratory');
+
+//Consultaion
+Route::get('/e-consultation',[IndexController::class, 'consultView'])->name('consultation');
+
+Route::get('/appointment/{id}',[AppointmentController::class,'openAppointmentView'])->name('appointment');
+
+Route::post('/initialise-appointment',[AppointmentController::class,'initialise'])->name('appointment.pay');
+
+Route::get('appointment/call',[AppointmentController::class, 'callback'])->name('callback.appointment');
