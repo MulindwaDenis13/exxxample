@@ -103,7 +103,7 @@ My Checkout
 		 <div class="form-group">
 	<h5><b>District Select</b>  <span class="text-danger">*</span></h5>
 	<div class="controls">
-		<select name="district_id" class="form-control" required="" >
+		<select name="district_id" class="form-control" required="" id="district" >
 			<option value="" selected="" disabled="">Select District</option>
 			 
 		</select>
@@ -320,7 +320,11 @@ My Checkout
                     dataType:"json",
                     success:function(data) {
                     	// $('select[name="state_id"]').empty(); 
-                       var d =$('select[name="district_id"]').empty();
+                    //    var d =$('select[name="district_id"]').empty();
+					if($('#district').val()){
+						$('select[name="district_id"]').empty();
+						$('select[name="district_id"]').append('<option value="">Select District</option>');
+					}
                           $.each(data, function(key, value){
                               $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
                           });

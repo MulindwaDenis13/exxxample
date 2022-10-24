@@ -364,9 +364,9 @@ E-Pharmacy | Sure Health Online Shop
 
 
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        {{-- <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
-              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li> --}}
             </ul>
           </div>
           <!-- /.action -->
@@ -458,10 +458,10 @@ E-Pharmacy | Sure Health Online Shop
 
 
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        {{-- <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
 
-              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li> --}}
             </ul>
           </div>
           <!-- /.action -->
@@ -588,11 +588,11 @@ E-Pharmacy | Sure Health Online Shop
 
 
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        {{-- <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
 
 
-      <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+      <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li> --}}
     </ul>
   </div>
           <!-- /.action -->
@@ -682,10 +682,10 @@ E-Pharmacy | Sure Health Online Shop
 
 
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        {{-- <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
 
-              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li> --}}
             </ul>
           </div>
           <!-- /.action -->
@@ -778,10 +778,10 @@ E-Pharmacy | Sure Health Online Shop
 
 
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        {{-- <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
 
-              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li> --}}
             </ul>
           </div>
           <!-- /.action -->
@@ -1306,7 +1306,7 @@ E-Pharmacy | Sure Health Online Shop
 
 
 
-                                                          <button class="btn btn-primary icon"
+                                                          {{-- <button class="btn btn-primary icon"
                                                               type="button" title="Wishlist"
                                                               id="{{ $product['id'] }}"
                                                               onclick="addToWishList(this.id)"> <i
@@ -1315,7 +1315,7 @@ E-Pharmacy | Sure Health Online Shop
                                                           <li class="lnk"> <a data-toggle="tooltip"
                                                                   class="add-to-cart" href="detail.html"
                                                                   title="Compare"> <i class="fa fa-signal"
-                                                                      aria-hidden="true"></i> </a> </li>
+                                                                      aria-hidden="true"></i> </a> </li> --}}
                                                       </ul>
                                                   </div>
                                                   <!-- /.action -->
@@ -1413,7 +1413,7 @@ E-Pharmacy | Sure Health Online Shop
 
 
 
-                                                          <button class="btn btn-primary icon"
+                                                          {{-- <button class="btn btn-primary icon"
                                                               type="button" title="Wishlist"
                                                               id="{{ $product['id'] }}"
                                                               onclick="addToWishList(this.id)"> <i
@@ -1422,7 +1422,7 @@ E-Pharmacy | Sure Health Online Shop
                                                           <li class="lnk"> <a data-toggle="tooltip"
                                                                   class="add-to-cart" href="detail.html"
                                                                   title="Compare"> <i class="fa fa-signal"
-                                                                      aria-hidden="true"></i> </a> </li>
+                                                                      aria-hidden="true"></i> </a> </li> --}}
                                                       </ul>
                                                   </div>
                                                   <!-- /.action -->
@@ -1519,7 +1519,7 @@ E-Pharmacy | Sure Health Online Shop
                                                           </li>
 
 
-
+{{-- 
                                                           <button class="btn btn-primary icon"
                                                               type="button" title="Wishlist"
                                                               id="{{ $product['id'] }}"
@@ -1529,7 +1529,7 @@ E-Pharmacy | Sure Health Online Shop
                                                           <li class="lnk"> <a data-toggle="tooltip"
                                                                   class="add-to-cart" href="detail.html"
                                                                   title="Compare"> <i class="fa fa-signal"
-                                                                      aria-hidden="true"></i> </a> </li>
+                                                                      aria-hidden="true"></i> </a> </li> --}}
                                                       </ul>
                                                   </div>
                                                   <!-- /.action -->
@@ -1645,7 +1645,7 @@ E-Pharmacy | Sure Health Online Shop
 
 
 
-                                                              <button class="btn btn-primary icon"
+                                                              {{-- <button class="btn btn-primary icon"
                                                                   type="button" title="Wishlist"
                                                                   id="{{ $product->id }}"
                                                                   onclick="addToWishList(this.id)"> <i
@@ -1656,7 +1656,7 @@ E-Pharmacy | Sure Health Online Shop
                                                                       class="add-to-cart" href="detail.html"
                                                                       title="Compare"> <i
                                                                           class="fa fa-signal"
-                                                                          aria-hidden="true"></i> </a> </li>
+                                                                          aria-hidden="true"></i> </a> </li> --}}
                                                           </ul>
                                                       </div>
                                                       <!-- /.action -->

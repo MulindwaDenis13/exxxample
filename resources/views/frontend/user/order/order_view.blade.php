@@ -16,7 +16,7 @@
             <tbody>
   
               <tr style="background: #e2e2e2;">
-                <td class="col-md-1">
+                <td class="col-md-2">
                   <label for=""> Date</label>
                 </td>
 

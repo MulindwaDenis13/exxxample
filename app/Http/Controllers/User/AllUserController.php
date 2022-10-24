@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Appointment;
 use Illuminate\Support\Facades\Session;
 use Auth;
 use Carbon\Carbon;
@@ -23,6 +24,11 @@ class AllUserController extends Controller
     	return view('frontend.user.order.order_view',compact('orders'));
 
     } // end mehtod 
+
+    public function MyAppointments(){
+        $appointments = Appointment::with('doctor')->where('user_id',Auth::id())->orderBy('id','DESC')->get();
+        return view('frontend.user.appointment.view',compact('appointments'));
+    } // end method
 
 
 

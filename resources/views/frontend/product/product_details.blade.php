@@ -88,7 +88,7 @@
     <div class="product-item-holder size-big single-product-gallery small-gallery">
 
         <div id="owl-single-product">
-
+			@if(count($multiImag) > 0)
         	@foreach($multiImag as $img)
             <div class="single-product-gallery-item" id="slide{{ $img->id }}">
   <a data-lightbox="image-1" data-title="Gallery" href="{{ asset($img->photo_name ) }} ">
@@ -96,6 +96,13 @@
                 </a>
             </div><!-- /.single-product-gallery-item -->
             @endforeach
+			@else
+			<div class="single-product-gallery-item" id="">
+				{{-- <a data-lightbox="image-1" data-title="Gallery" href="{{ asset($img->photo_name ) }} "> --}}
+								  <img class="img-responsive" alt="" src="{{ asset($product->product_thambnail ) }}" data-echo="{{asset($product->product_thambnail)}}"/>
+							  {{-- </a> --}}
+						  </div>
+			@endif
 
 
         </div><!-- /.single-product-slider -->

@@ -134,8 +134,8 @@ $seo = App\Models\Seo::find(1);
         <div class="col-md-4">
 
      <ul class="list-group">
-  <li class="list-group-item">Product Price: <strong class="text-danger">$<span id="pprice"></span></strong>
-<del id="oldprice">$</del>
+  <li class="list-group-item">Product Price: <strong class="text-danger">UGX<span id="pprice"></span></strong>
+<del id="oldprice">UGX</del>
    </li>
   <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
   <li class="list-group-item">Category: <strong id="pcategory"></strong></li>

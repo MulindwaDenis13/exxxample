@@ -26,7 +26,7 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								{{-- <th>Image </th> --}}
+								<th>Date Created</th>
 								<th>Name</th>
 								<th>Phone Number</th>
 								<th>Email </th>
@@ -40,6 +40,7 @@
 	 @foreach($appointments as $item)
 	 <tr>
 		{{-- <td> <img src="{{ asset($item->product_thambnail) }}" style="width: 60px; height: 50px;">  </td> --}}
+		<td>{{$item->created_at->format('d-m-Y')}}</td>
 		<td>{{ $item->user->name }}</td>
 		 <td>{{ $item->user->phone }} </td>
 		 <td>{{ $item->user->email }}</td>
@@ -56,7 +57,7 @@
 		 </td>
 
 
-		<td width="30%">
+		<td width="">
  {{-- <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i> </a> --}}
 
  {{-- <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a> --}}

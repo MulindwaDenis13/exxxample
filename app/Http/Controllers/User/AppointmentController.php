@@ -71,7 +71,8 @@ class AppointmentController extends Controller
                     'amount' => 30000,
                     'transaction_id' => $transactionID,
                     'user_id' => auth()->user()->id,
-                    'approved' => 0
+                    'approved' => 0,
+                    'created_at' => \Carbon\Carbon::now()
                 ]);
                 return redirect()->route('consultation');
             }elseif($status == 'cancelled'){
