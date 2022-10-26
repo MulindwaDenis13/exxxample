@@ -190,7 +190,7 @@ Product Search Page
 
         <!-- == ==== SECTION – HERO === ====== -->
 
-        <div id="category" class="category-carousel hidden-xs">
+        {{-- <div id="category" class="category-carousel hidden-xs">
           <div class="item">
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
             <div class="container-fluid">
@@ -203,7 +203,7 @@ Product Search Page
             </div>
             <!-- /.container-fluid -->
           </div>
-        </div>
+        </div> --}}
 
         <h4><b>Total Search </b><span class="badge badge-danger" style="background: #FF0000;"> {{ count($products) }} </span> Items  </h4>
 
@@ -317,11 +317,11 @@ Product Search Page
 
 
 @if ($product->discount_price == NULL)
-<div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>   </div>
+<div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>   </div>
 
 @else
 
-<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+<div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
 @endif
 
 
@@ -338,8 +338,8 @@ Product Search Page
                 <button class="btn btn-primary icon" data-toggle="modal" data-target="#exampleModal" title="Add Cart" type="button" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
               </li>
-              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+              {{-- <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li> --}}
             </ul>
           </div>
           <!-- /.action -->
@@ -405,9 +405,9 @@ Product Search Page
 
 
             @if ($product->discount_price == NULL)
-            <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+            <div class="product-price"> <span class="price"> UGX{{ $product->selling_price }} </span>  </div>
             @else
-<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+<div class="product-price"> <span class="price"> UGX{{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
             @endif
 
             <!-- /.product-price -->
@@ -419,8 +419,8 @@ Product Search Page
                     <button class="btn btn-primary icon" title="Add Cart" data-toggle="modal" data-target="#exampleModal" type="button" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
                     <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                   </li>
-                  <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                  <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                  {{-- <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                  <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li> --}}
                 </ul>
               </div>
               <!-- /.action -->
