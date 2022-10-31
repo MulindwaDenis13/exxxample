@@ -13,9 +13,17 @@ use App\Models\Appointment;
 
 class AppointmentController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['user:auth']);
+    }
+    
     public function openAppointmentView($id){
         $doctor = $id; 
-        return view('frontend.payment.appointment',compact('doctor'));
+        if(auth()->check()){
+            return view('frontend.payment.appointment',compact('doctor'));
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     public function initialise(Request $request)
@@ -66,7 +74,7 @@ class AppointmentController extends Controller
             $transactionID = Flutterwave::getTransactionIDFromCallback();
             if(Session::has('appointment_order')){
                 $appointment_info = Session::get('appointment_order');
-                Appointment::insertGetId([
+                $appointment = Appointment::insertGetId([
                     'doctor_id' => $appointment_info['doctor_id'],
                     'amount' => 30000,
                     'transaction_id' => $transactionID,
@@ -74,7 +82,8 @@ class AppointmentController extends Controller
                     'approved' => 0,
                     'created_at' => \Carbon\Carbon::now()
                 ]);
-                return redirect()->route('consultation');
+                $waiting = Appointment::with(['doctor'])->findorFail($appointment);
+                return view('frontend.user.appointment.waiting',compact('waiting'));
             }elseif($status == 'cancelled'){
                 return 'Payment Cancelled';
             } else {

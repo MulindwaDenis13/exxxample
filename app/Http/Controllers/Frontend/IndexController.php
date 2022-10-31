@@ -180,14 +180,10 @@ class IndexController extends Controller
 
 	}
 
-	private function category_identifier($products, $identifier){
-		$filtered = [];
-		foreach($products as $product){
-			if(!is_null($product->category) && $product->category->identifier === $identifier){
-				$filtered[] = $product;
-			}
-		}
-		return $filtered;
+	public function CategorySearch($id){
+		$products = Product::where('category_id',$id)->get();
+		$categories = Category::orderBy('category_name_en','ASC')->get();
+		return view('frontend.product.search',compact('products','categories'));
 	}
 
 	// display E-pharmacy view

@@ -569,6 +569,8 @@ Route::get('/delete/{id}', [AdminUserController::class, 'DeleteAdminRole'])->nam
 /// Product Search Route
 Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product.search');
 
+Route::get('/search-category/{id}',[IndexController::class,'CategorySearch'])->name('category.search');
+
 // E-Pharmacy Route
 Route::get('/e-pharmacy', [IndexController::class, 'PharmacyView'])->name('pharmacy');
 
