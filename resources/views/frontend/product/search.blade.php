@@ -286,11 +286,14 @@ Product Search Page
 
 
 @foreach($products as $product)
+@php
+$name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+@endphp
   <div class="col-sm-6 col-md-4 wow fadeInUp">
     <div class="products">
       <div class="product">
         <div class="product-image">
-          <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+          <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$name) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
           <!-- /.image -->
 
            @php
@@ -311,7 +314,7 @@ Product Search Page
         <!-- /.product-image -->
 
         <div class="product-info text-left">
-          <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">{{ $product->product_name_en }}</a></h3>
+          <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$name) }}">{{ $product->product_name_en }}</a></h3>
           <div class="rating rateit-small"></div>
           <div class="description"></div>
 
@@ -387,6 +390,9 @@ Product Search Page
 
 
  @foreach($products as $product)
+ @php
+ $name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+@endphp
 <div class="category-product-inner wow fadeInUp">
   <div class="products">
     <div class="product-list product">
@@ -400,7 +406,7 @@ Product Search Page
         <!-- /.col -->
         <div class="col col-sm-8 col-lg-8">
           <div class="product-info">
-            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">{{ $product->product_name_en }}</a></h3>
+            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$name ) }}">{{ $product->product_name_en }}</a></h3>
             <div class="rating rateit-small"></div>
 
 

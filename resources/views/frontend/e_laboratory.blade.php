@@ -318,12 +318,15 @@
                                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
                                     @if (count($products) > 0)
                                         @foreach ($products as $product)
+                                        @php
+$name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+@endphp
                                             <div class="item item-carousel">
                                                 <div class="products">
                                                     <div class="product">
                                                         <div class="product-image">
                                                             <div class="image"> <a
-                                                                    href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}"><img
+                                                                    href="{{ url('product/details/' . $product->id . '/' . $name) }}"><img
                                                                         src="{{ asset($product->product_thambnail) }}"
                                                                         alt=""></a> </div>
                                                             <!-- /.image -->
@@ -348,7 +351,7 @@
 
                                                         <div class="product-info text-left">
                                                             <h3 class="name"><a
-                                                                    href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}">
+                                                                    href="{{ url('product/details/' . $product->id . '/' . $name) }}">
                                                                     {{ $product->product_name_en }}
                                                                 </a></h3>
                                                             <div class="rating rateit-small"></div>
@@ -381,7 +384,9 @@
                                                                             data-target="#exampleModal"
                                                                             id="{{ $product->id }}"
                                                                             onclick="productView(this.id)"> <i
-                                                                                class="fa fa-shopping-cart"></i>
+                                                                                class="fa fa-shopping-cart">
+                                                                                &nbsp;&nbsp; Add to Cart
+                                                                              </i>
                                                                         </button>
 
                                                                         <button class="btn btn-primary cart-btn"
@@ -441,12 +446,15 @@
 
 
                                             @forelse($catwiseProduct as $product)
+                                            @php
+                                            $name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+                                            @endphp
                                                 <div class="item item-carousel">
                                                     <div class="products">
                                                         <div class="product">
                                                             <div class="product-image">
                                                                 <div class="image"> <a
-                                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}"><img
+                                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}"><img
                                                                             src="{{ asset($product->product_thambnail) }}"
                                                                             alt=""></a> </div>
                                                                 <!-- /.image -->
@@ -471,7 +479,7 @@
 
                                                             <div class="product-info text-left">
                                                                 <h3 class="name"><a
-                                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}">
+                                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}">
                                                                         {{ $product->product_name_en }}
                                                                     </a></h3>
                                                                 <div class="rating rateit-small"></div>
@@ -505,7 +513,9 @@
                                                                                 data-target="#exampleModal"
                                                                                 id="{{ $product->id }}"
                                                                                 onclick="productView(this.id)"> <i
-                                                                                    class="fa fa-shopping-cart"></i>
+                                                                                    class="fa fa-shopping-cart">
+                                                                                    &nbsp;&nbsp; Add to Cart
+                                                                                  </i>
                                                                             </button>
 
                                                                             <button class="btn btn-primary cart-btn"
@@ -594,12 +604,15 @@
 
                         @if (count($featured) > 0)
                             @foreach ($featured as $product)
+                            @php
+                            $name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+                            @endphp
                                 <div class="item item-carousel">
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
                                                 <div class="image"> <a
-                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}"><img
+                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}"><img
                                                             src="{{ asset($product->product_thambnail) }}"
                                                             alt=""></a> </div>
                                                 <!-- /.image -->
@@ -623,7 +636,7 @@
 
                                             <div class="product-info text-left">
                                                 <h3 class="name"><a
-                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}">
+                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}">
                                                         {{ $product->product_name_en }}
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
@@ -654,7 +667,9 @@
                                                                 title="Add Cart" data-toggle="modal"
                                                                 data-target="#exampleModal" id="{{ $product->id }}"
                                                                 onclick="productView(this.id)"> <i
-                                                                    class="fa fa-shopping-cart"></i> </button>
+                                                                    class="fa fa-shopping-cart">
+                                                                    &nbsp;&nbsp; Add to Cart
+                                                                  </i> </button>
 
                                                             <button class="btn btn-primary cart-btn"
                                                                 type="button">Add to cart</button>
@@ -708,12 +723,15 @@
 
 
                             @foreach ($skip_product_0 as $product)
+                            @php
+                            $name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+                            @endphp
                                 <div class="item item-carousel">
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
                                                 <div class="image"> <a
-                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}"><img
+                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}"><img
                                                             src="{{ asset($product->product_thambnail) }}"
                                                             alt=""></a> </div>
                                                 <!-- /.image -->
@@ -737,7 +755,7 @@
 
                                             <div class="product-info text-left">
                                                 <h3 class="name"><a
-                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}">
+                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}">
                                                         {{ $product->product_name_en }}
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
@@ -768,7 +786,9 @@
                                                                 title="Add Cart" data-toggle="modal"
                                                                 data-target="#exampleModal" id="{{ $product->id }}"
                                                                 onclick="productView(this.id)"> <i
-                                                                    class="fa fa-shopping-cart"></i> </button>
+                                                                    class="fa fa-shopping-cart">
+                                                                    &nbsp;&nbsp; Add to Cart
+                                                                  </i> </button>
 
                                                             <button class="btn btn-primary cart-btn"
                                                                 type="button">Add to cart</button>
@@ -824,12 +844,15 @@
 
 
                             @foreach ($skip_product_1 as $product)
+                            @php
+                            $name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+                            @endphp
                                 <div class="item item-carousel">
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
                                                 <div class="image"> <a
-                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}"><img
+                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}"><img
                                                             src="{{ asset($product->product_thambnail) }}"
                                                             alt=""></a> </div>
                                                 <!-- /.image -->
@@ -853,7 +876,7 @@
 
                                             <div class="product-info text-left">
                                                 <h3 class="name"><a
-                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}">
+                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}">
                                                         {{ $product->product_name_en }}
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
@@ -884,7 +907,9 @@
                                                                 title="Add Cart" data-toggle="modal"
                                                                 data-target="#exampleModal" id="{{ $product->id }}"
                                                                 onclick="productView(this.id)"> <i
-                                                                    class="fa fa-shopping-cart"></i> </button>
+                                                                    class="fa fa-shopping-cart">
+                                                                    &nbsp;&nbsp; Add to Cart
+                                                                  </i> </button>
 
                                                             <button class="btn btn-primary cart-btn"
                                                                 type="button">Add to cart</button>
@@ -1355,12 +1380,15 @@
                                     style="margin-bottom: 60px; border-bottom:1px solid #eee">
                                     @if (count($first_ten_products) > 0)
                                         @foreach ($first_ten_products['data'] as $product)
+                                        @php
+                                        $name = str_contains($product['product_slug_en'], '/') ? str_replace('/','-',$product['product_slug_en']) : $product['product_slug_en'];
+                                        @endphp
                                             <div class="item item-carousel">
                                                 <div class="products">
                                                     <div class="product">
                                                         <div class="product-image">
                                                             <div class="image"> <a
-                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}"><img
+                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $name) }}"><img
                                                                         src="{{ asset($product['product_thambnail']) }}"
                                                                         alt=""></a> </div>
                                                             <!-- /.image -->
@@ -1385,7 +1413,7 @@
 
                                                         <div class="product-info text-left">
                                                             <h3 class="name"><a
-                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}">
+                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $name) }}">
                                                                     {{ $product['product_name_en'] }}
                                                                 </a></h3>
                                                             <div class="rating rateit-small"></div>
@@ -1420,7 +1448,9 @@
                                                                             data-target="#exampleModal"
                                                                             id="{{ $product['id'] }}"
                                                                             onclick="productView(this.id)"> <i
-                                                                                class="fa fa-shopping-cart"></i>
+                                                                                class="fa fa-shopping-cart">
+                                                                                &nbsp;&nbsp; Add to Cart
+                                                                              </i>
                                                                         </button>
 
                                                                         <button class="btn btn-primary cart-btn"
@@ -1462,12 +1492,15 @@
                                     style="margin-bottom: 60px; border-bottom:1px solid #eee">
                                     @if (count($second_ten_products) > 0)
                                         @foreach ($second_ten_products as $product)
+                                        @php
+                                        $name = str_contains($product['product_slug_en'], '/') ? str_replace('/','-',$product['product_slug_en']) : $product['product_slug_en'];
+                                        @endphp
                                             <div class="item item-carousel">
                                                 <div class="products">
                                                     <div class="product">
                                                         <div class="product-image">
                                                             <div class="image"> <a
-                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}"><img
+                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $name) }}"><img
                                                                         src="{{ asset($product['product_thambnail']) }}"
                                                                         alt=""></a> </div>
                                                             <!-- /.image -->
@@ -1492,7 +1525,7 @@
 
                                                         <div class="product-info text-left">
                                                             <h3 class="name"><a
-                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}">
+                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $name) }}">
                                                                     {{ $product['product_name_en'] }}
                                                                 </a></h3>
                                                             <div class="rating rateit-small"></div>
@@ -1527,7 +1560,9 @@
                                                                             data-target="#exampleModal"
                                                                             id="{{ $product['id'] }}"
                                                                             onclick="productView(this.id)"> <i
-                                                                                class="fa fa-shopping-cart"></i>
+                                                                                class="fa fa-shopping-cart">
+                                                                                &nbsp;&nbsp; Add to Cart
+                                                                              </i>
                                                                         </button>
 
                                                                         <button class="btn btn-primary cart-btn"
@@ -1569,12 +1604,15 @@
                                     style="margin-bottom: 60px; border-bottom:1px solid #eee">
                                     @if (count($third_ten_products) > 0)
                                         @foreach ($third_ten_products as $product)
+                                        @php
+                                        $name = str_contains($product['product_slug_en'], '/') ? str_replace('/','-',$product['product_slug_en']) : $product['product_slug_en'];
+                                        @endphp
                                             <div class="item item-carousel">
                                                 <div class="products">
                                                     <div class="product">
                                                         <div class="product-image">
                                                             <div class="image"> <a
-                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}"><img
+                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $name) }}"><img
                                                                         src="{{ asset($product['product_thambnail']) }}"
                                                                         alt=""></a> </div>
                                                             <!-- /.image -->
@@ -1599,7 +1637,7 @@
 
                                                         <div class="product-info text-left">
                                                             <h3 class="name"><a
-                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $product['product_slug_en']) }}">
+                                                                    href="{{ url('product/details/' . $product['id'] . '/' . $name) }}">
                                                                     {{ $product['product_name_en'] }}
                                                                 </a></h3>
                                                             <div class="rating rateit-small"></div>
@@ -1634,7 +1672,9 @@
                                                                             data-target="#exampleModal"
                                                                             id="{{ $product['id'] }}"
                                                                             onclick="productView(this.id)"> <i
-                                                                                class="fa fa-shopping-cart"></i>
+                                                                                class="fa fa-shopping-cart">
+                                                                                &nbsp;&nbsp; Add to Cart
+                                                                              </i>
                                                                         </button>
 
                                                                         <button class="btn btn-primary cart-btn"
@@ -1695,12 +1735,15 @@
 
 
                                             @forelse($catwiseProduct as $product)
+                                            @php
+                                            $name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+                                            @endphp
                                                 <div class="item item-carousel">
                                                     <div class="products">
                                                         <div class="product">
                                                             <div class="product-image">
                                                                 <div class="image"> <a
-                                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}"><img
+                                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}"><img
                                                                             src="{{ asset($product->product_thambnail) }}"
                                                                             alt=""></a> </div>
                                                                 <!-- /.image -->
@@ -1725,7 +1768,7 @@
 
                                                             <div class="product-info text-left">
                                                                 <h3 class="name"><a
-                                                                        href="{{ url('product/details/' . $product->id . '/' . $product->product_slug_en) }}">
+                                                                        href="{{ url('product/details/' . $product->id . '/' . $name) }}">
                                                                         {{ $product->product_name_en }}
                                                                     </a></h3>
                                                                 <div class="rating rateit-small"></div>
@@ -2134,12 +2177,6 @@
 </div>
 <!-- /#top-banner-and-menu -->
 <script type="text/javascript">
-$('.pagination a').on('click', function(){
-  console.log('load')
-  window.onload = function(){
-    document.getElementById('lab-products').scrollIntoView(true);
-  }
-});
 </script>
 
 @endsection

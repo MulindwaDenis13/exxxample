@@ -460,13 +460,17 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 		@foreach($relatedProduct as $product)
 
+		@php
+			$name = str_contains($product->product_slug_en, '/') ? str_replace('/','-',$product->product_slug_en) : $product->product_slug_en;
+		@endphp
+
 		<div class="item item-carousel">
 			<div class="products">
 
 	<div class="product">
 		<div class="product-image">
 			<div class="image">
-				<a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a>
+				<a href="{{ url('product/details/'.$product->id.'/'.$name ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a>
 			</div><!-- /.image -->
 
 			            <div class="tag sale"><span>sale</span></div>
@@ -474,7 +478,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 
 		<div class="product-info text-left">
-			<h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">{{ $product->product_name_en }}</a></h3>
+			<h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$name ) }}">{{ $product->product_name_en }}</a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 
